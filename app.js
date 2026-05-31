@@ -223,29 +223,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Move hover container following mouse — use fixed viewport coords with boundary clamping
+    // Move hover container following mouse — always to the right, clamped vertically
     projectsWrapper.addEventListener('mousemove', (e) => {
       const popupW = hoverContainer.offsetWidth;
       const popupH = hoverContainer.offsetHeight;
-      const margin = 16; // minimum gap from viewport edge
+      const margin = 16;
 
-      // Default: popup appears to the right and slightly above the cursor
-      let xPos = e.clientX + 20;
-      let yPos = e.clientY - popupH / 2;
+      // Always to the right of cursor
+      let xPos = e.clientX + 24;
 
-      // Clamp horizontally: if it overflows right, flip to the left of cursor
+      // If popup overflows right edge, pin it to the right margin instead
       if (xPos + popupW + margin > window.innerWidth) {
-        xPos = e.clientX - popupW - 20;
-      }
-      // Clamp left edge
-      if (xPos < margin) {
-        xPos = margin;
+        xPos = window.innerWidth - popupW - margin;
       }
 
-      // Clamp vertically: keep within top/bottom bounds
-      if (yPos < margin) {
-        yPos = margin;
-      }
+      // Center popup vertically on cursor, clamped to viewport
+      let yPos = e.clientY - popupH / 2;
+      if (yPos < margin) yPos = margin;
       if (yPos + popupH + margin > window.innerHeight) {
         yPos = window.innerHeight - popupH - margin;
       }
@@ -253,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(hoverContainer, {
         left: xPos,
         top: yPos,
-        duration: 0.25,
+        duration: 0.2,
         ease: 'power2.out'
       });
     });

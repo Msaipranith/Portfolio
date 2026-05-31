@@ -223,16 +223,36 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Move hover container following mouse movements inside grid wrapper
+    // Move hover container following mouse — use fixed viewport coords with boundary clamping
     projectsWrapper.addEventListener('mousemove', (e) => {
-      const wrapperRect = projectsWrapper.getBoundingClientRect();
-      // Calculate local offsets for thumbnail position
-      const xPos = e.clientX - wrapperRect.left + 25; // 25px cursor right offset
-      const yPos = e.clientY - wrapperRect.top - 180; // center vertical offset
-      
+      const popupW = hoverContainer.offsetWidth;
+      const popupH = hoverContainer.offsetHeight;
+      const margin = 16; // minimum gap from viewport edge
+
+      // Default: popup appears to the right and slightly above the cursor
+      let xPos = e.clientX + 20;
+      let yPos = e.clientY - popupH / 2;
+
+      // Clamp horizontally: if it overflows right, flip to the left of cursor
+      if (xPos + popupW + margin > window.innerWidth) {
+        xPos = e.clientX - popupW - 20;
+      }
+      // Clamp left edge
+      if (xPos < margin) {
+        xPos = margin;
+      }
+
+      // Clamp vertically: keep within top/bottom bounds
+      if (yPos < margin) {
+        yPos = margin;
+      }
+      if (yPos + popupH + margin > window.innerHeight) {
+        yPos = window.innerHeight - popupH - margin;
+      }
+
       gsap.to(hoverContainer, {
-        x: xPos,
-        y: yPos,
+        left: xPos,
+        top: yPos,
         duration: 0.25,
         ease: 'power2.out'
       });

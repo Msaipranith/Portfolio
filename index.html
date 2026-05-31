@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Mugala Sai Pranith</title>
+  <meta name="description" content="Personal portfolio of Mugala Sai Pranith" />
+  <link rel="icon" href="https://www.tajmirul.site/favicon.ico" type="image/x-icon" sizes="48x48" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(var(--background))',
+            'background-light': 'hsl(var(--background-light))',
+            foreground: 'hsl(var(--foreground))',
+            primary: 'hsl(var(--primary))',
+            'primary-foreground': 'hsl(var(--primary-foreground))',
+            secondary: 'hsl(var(--secondary))',
+            'secondary-foreground': 'hsl(var(--secondary-foreground))',
+            border: 'hsl(var(--border))',
+            'muted-foreground': 'hsl(var(--muted-foreground))',
+            'primary-hover': 'hsl(140, 100%, 42%)',
+          },
+          fontFamily: {
+            anton: ['Anton', 'sans-serif'],
+            roboto: ['Roboto Flex', 'sans-serif'],
+          },
+          screens: {
+            'xs': '475px',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="__variable_ec6dc7 __variable_fb12db antialiased">
+
+  <!-- Custom Fluid Cursor Elements -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+
+  <!-- Fixed High-Performance Space Parallax Canvas Background -->
+  <canvas id="space-canvas" class="fixed inset-0 w-full h-full z-[-1] pointer-events-none bg-black"></canvas>
+
+  <!-- Columnar Preloader Overlay -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-overlay">
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+      <div class="preloader-item h-full w-[10%] bg-black"></div>
+    </div>
+    <p class="preloader-name name-text flex text-[8vw] sm:text-[7vw] lg:text-[100px] font-anton text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none overflow-hidden whitespace-nowrap"
+      id="preloader-name">
+      <span class="inline-block translate-y-full char">S</span>
+      <span class="inline-block translate-y-full char">A</span>
+      <span class="inline-block translate-y-full char">I</span>
+      <span class="inline-block translate-y-full char">&nbsp;</span>
+      <span class="inline-block translate-y-full char">P</span>
+      <span class="inline-block translate-y-full char">R</span>
+      <span class="inline-block translate-y-full char">A</span>
+      <span class="inline-block translate-y-full char">N</span>
+      <span class="inline-block translate-y-full char">I</span>
+      <span class="inline-block translate-y-full char">T</span>
+      <span class="inline-block translate-y-full char">H</span>
+      <span class="inline-block translate-y-full char">&nbsp;</span>
+      <span class="inline-block translate-y-full char">M</span>
+      <span class="inline-block translate-y-full char">U</span>
+      <span class="inline-block translate-y-full char">G</span>
+      <span class="inline-block translate-y-full char">A</span>
+      <span class="inline-block translate-y-full char">L</span>
+      <span class="inline-block translate-y-full char">A</span>
+    </p>
+  </div>
+
+  <!-- Header sticky toggle menu -->
+  <div class="sticky top-0 z-[4]">
+    <button class="group size-12 absolute top-5 right-5 md:right-10 z-[2]" id="menu-toggle" aria-label="Toggle Menu">
+      <span
+        class="inline-block w-3/5 h-0.5 bg-foreground rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 -translate-y-[5px] line-top"></span>
+      <span
+        class="inline-block w-3/5 h-0.5 bg-foreground rounded-full absolute left-1/2 -translate-x-1/2 top-1/2 duration-300 translate-y-[5px] line-bottom"></span>
+    </button>
+  </div>
+
+  <!-- Fullscreen Drawer Menu Overlay -->
+  <div
+    class="overlay fixed inset-0 z-[2] bg-black/70 transition-all duration-150 opacity-0 invisible pointer-events-none"
+    id="menu-overlay-bg"></div>
+  <div
+    class="fixed top-0 right-0 h-[100dvh] w-[500px] max-w-[calc(100vw-3rem)] transform translate-x-full transition-transform duration-700 z-[3] overflow-hidden gap-y-14 flex flex-col lg:justify-center py-10"
+    id="menu-drawer">
+    <div
+      class="fixed inset-0 scale-150 translate-x-1/2 rounded-[50%] bg-background-light duration-700 delay-150 z-[-1]">
+    </div>
+
+    <div class="grow flex md:items-center w-full max-w-[300px] mx-8 sm:mx-auto">
+      <div class="flex gap-10 lg:justify-between max-lg:flex-col w-full">
+        <!-- Social Links -->
+        <div class="max-lg:order-2">
+          <p class="text-muted-foreground mb-5 md:mb-8 text-xs uppercase tracking-widest font-medium">SOCIAL</p>
+          <ul class="space-y-3">
+            <li><a href="https://github.com/Msaipranith" target="_blank" rel="noreferrer"
+                class="text-lg capitalize hover:underline hover:text-white">github</a></li>
+            <li><a href="https://www.linkedin.com/in/pranith0418/" target="_blank" rel="noreferrer"
+                class="text-lg capitalize hover:underline hover:text-white">linkedin</a></li>
+          </ul>
+        </div>
+        <!-- Nav Menu Navigation -->
+        <div>
+          <p class="text-muted-foreground mb-5 md:mb-8 text-xs uppercase tracking-widest font-medium">MENU</p>
+          <ul class="space-y-3">
+            <li>
+              <button class="group text-xl flex items-center gap-3 text-white font-medium menu-btn"
+                data-target="#banner">
+                <span
+                  class="size-3.5 rounded-full flex items-center justify-center bg-yellow-500 text-black transform scale-100 group-hover:scale-[200%] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="scale-0 group-hover:scale-100 transition-all">
+                    <path d="M13 5H19V11"></path>
+                    <path d="M19 5L5 19"></path>
+                  </svg>
+                </span>
+                Home
+              </button>
+            </li>
+            <li>
+              <button class="group text-xl flex items-center gap-3 text-white font-medium menu-btn"
+                data-target="#about-me">
+                <span
+                  class="size-3.5 rounded-full flex items-center justify-center bg-blue-500 text-white transform scale-100 group-hover:scale-[200%] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="scale-0 group-hover:scale-100 transition-all">
+                    <path d="M13 5H19V11"></path>
+                    <path d="M19 5L5 19"></path>
+                  </svg>
+                </span>
+                About Me
+              </button>
+            </li>
+            <li>
+              <button class="group text-xl flex items-center gap-3 text-white font-medium menu-btn"
+                data-target="#my-experience">
+                <span
+                  class="size-3.5 rounded-full flex items-center justify-center bg-teal-500 text-black transform scale-100 group-hover:scale-[200%] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="scale-0 group-hover:scale-100 transition-all">
+                    <path d="M13 5H19V11"></path>
+                    <path d="M19 5L5 19"></path>
+                  </svg>
+                </span>
+                Experience
+              </button>
+            </li>
+            <li>
+              <button class="group text-xl flex items-center gap-3 text-white font-medium menu-btn"
+                data-target="#selected-projects">
+                <span
+                  class="size-3.5 rounded-full flex items-center justify-center bg-indigo-500 text-white transform scale-100 group-hover:scale-[200%] transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="scale-0 group-hover:scale-100 transition-all">
+                    <path d="M13 5H19V11"></path>
+                    <path d="M19 5L5 19"></path>
+                  </svg>
+                </span>
+                Projects
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full max-w-[300px] mx-8 sm:mx-auto">
+      <p class="text-muted-foreground mb-4 text-xs uppercase tracking-widest font-medium">GET IN TOUCH</p>
+      <a href="mailto:saipranithsunny@gmail.com"
+        class="text-white hover:underline hover:text-primary">saipranithsunny@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- Vertical sidebar email ribbon -->
+  <div class="max-xl:hidden fixed bottom-32 left-0 block">
+    <a href="mailto:saipranithsunny@gmail.com"
+      class="px-3 text-muted-foreground tracking-[1px] transition-all !bg-bottom hover:text-foreground hover:text-white"
+      style="text-orientation:mixed;writing-mode:vertical-rl">
+      saipranithsunny@gmail.com
+    </a>
+  </div>
+
+  <!-- Sidebar Active Scroll Indicator -->
+  <div
+    class="fixed top-[50svh] right-[2%] -translate-y-1/2 w-1.5 h-[100px] rounded-full bg-background-light overflow-hidden z-50">
+    <div class="w-full bg-primary rounded-full h-full" id="scroll-thumb"></div>
+  </div>
+
+  <!-- Smooth Scrolling Main Content Wrapper -->
+  <main>
+    <div>
+
+      <!-- Page Transition Overlay -->
+      <div class="page-transition w-screen h-screen fixed top-0 left-0 bg-background-light z-[5] opacity-0 invisible"
+        id="page-transition">
+        <div class="page-transition--inner w-screen h-screen fixed top-0 left-0 bg-primary z-[5] translate-y-full"
+          id="page-transition-inner"></div>
+      </div>
+
+      <div class="page-">
+        <!-- Section: Banner / Home -->
+        <section class="relative overflow-hidden section h-[100svh] min-h-[530px]" id="banner">
+          <!-- SVG background arrows -->
+          <svg id="banner-arrow-svg" width="376" height="111" viewBox="0 0 376 111" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="absolute bottom-20 left-1/2 -translate-x-1/2 z-0">
+            <path class="svg-arrow svg-arrow-1" d="M1 1V39.9286L188 110V70.6822L1 1Z" stroke="#3D3D3D"
+              stroke-width="1.5"></path>
+            <path class="svg-arrow svg-arrow-2" d="M375 1V39.9286L188 110V70.6822L375 1Z" stroke="#3D3D3D"
+              stroke-width="1.5"></path>
+          </svg>
+
+          <div class="container h-full flex justify-between items-center max-md:flex-col max-md:py-16">
+            <div class="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
+              <h1 class="banner-title leading-[.95] text-6xl sm:text-[80px] font-anton slide-up-and-fade">
+                <span class="text-primary">JAVA BACK-END</span><br />
+                <span class="ml-4 text-white">DEVELOPER</span>
+              </h1>
+
+              <p class="banner-description mt-6 text-lg text-muted-foreground slide-up-and-fade leading-relaxed">
+                Hi! I'm <span class="font-medium text-white">Mugala Sai Pranith</span>, a highly skilled Java Backend
+                Developer and Systems Architect with over 4+ years of expertise in engineering low-latency Spring Boot
+                microservices, high-throughput REST APIs, database optimization (PostgreSQL/AlloyDB), and scalable
+                event-driven solutions.
+              </p>
+
+              <a class="group h-12 px-8 inline-flex justify-center items-center gap-2 text-lg uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 mt-9 banner-button slide-up-and-fade"
+                target="_blank" rel="noopener noreferrer" href="https://www.freelancer.in/u/saipranith6945">
+                <span
+                  class="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
+                <span class="z-[1]">Let's Talk</span>
+              </a>
+
+              <div class="flex items-center gap-2 mt-3 slide-up-and-fade">
+                <span class="size-3 rounded-full bg-white animate-pulse"></span>
+                <span class="text-sm text-muted-foreground">Available for full-time opportunities</span>
+              </div>
+            </div>
+
+            <!-- Banner Stats -->
+            <div
+              class="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right max-md:mt-8">
+              <div class="slide-up-and-fade">
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">4+</h5>
+                <p class="text-muted-foreground text-sm">Years of Experience</p>
+              </div>
+              <div class="slide-up-and-fade">
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">6+</h5>
+                <p class="text-muted-foreground text-sm">Completed Projects</p>
+              </div>
+              <div class="slide-up-and-fade">
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">8K+</h5>
+                <p class="text-muted-foreground text-sm">Hours Worked</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: About Me -->
+        <section class="pb-section section" id="about-me">
+          <div class="container">
+            <h2 class="text-4xl md:text-6xl font-thin mb-20 text-white leading-tight slide-up-and-fade">
+              I believe in robust architecture and optimized database design, ensuring that every microservice I build
+              is high-performing, secure, and scalable.
+            </h2>
+
+            <p class="pb-3 border-b border-border text-muted-foreground slide-up-and-fade">This is me.</p>
+
+            <div class="grid md:grid-cols-12 mt-9 gap-8">
+              <div class="md:col-span-5 slide-up-and-fade">
+                <p class="text-5xl font-anton text-white tracking-wide uppercase leading-none mb-6">HI, I'M PRANITH.</p>
+                <div class="space-y-4 border-l border-primary/30 pl-4 mt-6">
+                  <div class="flex items-center gap-3">
+                    <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
+                    <span class="text-sm uppercase tracking-widest font-mono text-white/90">Spring Boot Architect</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
+                    <span class="text-sm uppercase tracking-widest font-mono text-white/90">Database Optimizer</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
+                    <span class="text-sm uppercase tracking-widest font-mono text-white/90">Event-Driven
+                      Specialist</span>
+                  </div>
+                </div>
+              </div>
+              <div class="md:col-span-7 slide-up-and-fade">
+                <div class="text-lg text-muted-foreground max-w-2xl space-y-6">
+                  <p class="slide-up-and-fade leading-relaxed">
+                    I am a <strong class="text-white font-semibold">highly skilled Java Backend Engineer &amp; Systems
+                      Architect</strong> dedicated to engineering low-latency, high-concurrency systems that power
+                    modern enterprise networks. With deep technical competence in designing distributed <strong
+                      class="text-white font-medium">Spring Boot microservices</strong>, robust RESTful API platforms,
+                    and reactive, event-driven architectures, I specialize in transforming intricate business
+                    requirements into secure, decoupled, and exceptionally resilient server environments.
+                  </p>
+                  <p class="slide-up-and-fade leading-relaxed">
+                    My engineering philosophy centers around ultra-fast database performance optimization (<strong
+                      class="text-white font-medium">PostgreSQL, AlloyDB, MySQL</strong>), robust containerized
+                    orchestrations, and seamless continuous integration pipelines. By coupling clean architecture
+                    guidelines and SOLID design principles with rigorous test-driven development (<strong
+                      class="text-white font-medium">JUnit, Mockito</strong>) to ensure zero-regression stability, I
+                    deploy enterprise-grade backends engineered to scale effortlessly under extreme traffic loads.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: My Stack -->
+        <section class="section" id="my-stack">
+          <div class="container">
+            <div class="flex items-center gap-4 mb-10 slide-reveal">
+              <!-- Exact Rotating Flower SVG extracted from original site -->
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                <defs>
+                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
+                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                  </pattern>
+                  <image id="section-flower_svg__b" width="400" height="453"
+                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                  </image>
+                </defs>
+              </svg>
+              <h2 class="text-xl uppercase leading-none text-white">My Stack</h2>
+            </div>
+
+            <div class="space-y-20">
+              <!-- Stack Category: Backend -->
+              <div class="grid sm:grid-cols-12 gap-6 items-start slide-reveal">
+                <div class="sm:col-span-5">
+                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">backend</p>
+                </div>
+                <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Java" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Java &amp; Java 8</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Spring Boot" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Spring Boot</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Hibernate" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/hibernate/hibernate-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Hibernate</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Spring MVC" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Spring MVC &amp; JPA</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Microservices" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Microservices</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Kafka" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/apachekafka/apachekafka-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Apache Kafka</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stack Category: Databases -->
+              <div class="grid sm:grid-cols-12 gap-6 items-start slide-reveal">
+                <div class="sm:col-span-5">
+                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">databases</p>
+                </div>
+                <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="PostgreSQL" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain" src="https://www.tajmirul.site/logo/postgreSQL.png" /></div>
+                    <span class="text-2xl capitalize text-white">PostgreSQL</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="MySQL" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain" src="https://www.tajmirul.site/logo/mysql.svg" /></div>
+                    <span class="text-2xl capitalize text-white">MySQL</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="AlloyDB" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/googlecloud/googlecloud-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">AlloyDB</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stack Category: Tools -->
+              <div class="grid sm:grid-cols-12 gap-6 items-start slide-reveal">
+                <div class="sm:col-span-5">
+                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">tools &amp; QA
+                  </p>
+                </div>
+                <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Docker" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain" src="https://www.tajmirul.site/logo/docker.svg" /></div>
+                    <span class="text-2xl capitalize text-white">Docker</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Git" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain" src="https://www.tajmirul.site/logo/git.png" /></div>
+                    <span class="text-2xl capitalize text-white">Git</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Maven" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/maven/maven-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Maven</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="Postman" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">Postman &amp; Swagger</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="JUnit" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">JUnit &amp; Mockito</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stack Category: Frontend -->
+              <div class="grid sm:grid-cols-12 gap-6 items-start slide-reveal">
+                <div class="sm:col-span-5">
+                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">frontend</p>
+                </div>
+                <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="React" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">React</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="JavaScript" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain" src="https://www.tajmirul.site/logo/js.png" /></div>
+                    <span class="text-2xl capitalize text-white">JavaScript</span>
+                  </div>
+                  <div class="slide-up flex gap-3.5 items-center leading-none">
+                    <div class="min-w-9"><img alt="HTML5" loading="lazy" width="40" height="40"
+                        class="max-h-10 object-contain"
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" />
+                    </div>
+                    <span class="text-2xl capitalize text-white">HTML5 &amp; CSS3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: My Experience -->
+        <section class="py-section section" id="my-experience">
+          <div class="container">
+            <div class="flex items-center gap-4 mb-10 slide-reveal">
+              <!-- Flower SVG icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                <defs>
+                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
+                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                  </pattern>
+                  <image id="section-flower_svg__b" width="400" height="453"
+                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                  </image>
+                </defs>
+              </svg>
+              <h2 class="text-xl uppercase leading-none text-white">My Experience</h2>
+            </div>
+
+            <div class="grid gap-14 slide-reveal">
+              <!-- Role 1 -->
+              <div class="experience-item">
+                <p class="text-xl text-muted-foreground">Tiger Analytics</p>
+                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-white">Java Backend Developer</p>
+                <p class="text-lg text-muted-foreground">Aug 2025 - Present (PepsiCo Platforms)</p>
+              </div>
+              <div class="experience-item">
+                <p class="text-xl text-muted-foreground">Tiger Analytics</p>
+                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-white">Java Backend Developer</p>
+                <p class="text-lg text-muted-foreground">Feb 2025 - Aug 2025 (WFM Migration)</p>
+              </div>
+              <!-- Role 2 -->
+              <div class="experience-item">
+                <p class="text-xl text-muted-foreground">Capgemini</p>
+                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-white">Java Backend Developer</p>
+                <p class="text-lg text-muted-foreground">June 2023 - Jan 2025 (Optimus Module)</p>
+              </div>
+              <!-- Role 3 -->
+              <div class="experience-item">
+                <p class="text-xl text-muted-foreground">Capgemini</p>
+                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-white">Java Backend Developer</p>
+                <p class="text-lg text-muted-foreground">Mar 2022 - May 2023 (Ruckkus-Hiring Module)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Selected Projects -->
+        <section class="pb-section section" id="selected-projects">
+          <div class="container">
+            <div class="flex items-center gap-4 mb-10 slide-reveal">
+              <!-- Flower SVG icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                <defs>
+                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
+                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                  </pattern>
+                  <image id="section-flower_svg__b" width="400" height="453"
+                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                  </image>
+                </defs>
+              </svg>
+              <h2 class="text-xl uppercase leading-none text-white">Selected Projects</h2>
+            </div>
+
+            <!-- Project Follow Cursor Hover Container -->
+            <div class="group/projects relative slide-reveal">
+
+              <!-- Floating Thumbnail Follow cursor element -->
+              <div
+                class="max-md:hidden absolute right-0 top-0 z-[1] pointer-events-none w-[200px] xl:w-[350px] aspect-[3/4] overflow-hidden opacity-0"
+                id="project-hover-container">
+                <img alt="WFM Migration" loading="lazy" width="400" height="500"
+                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                  src="https://www.tajmirul.site/projects/thumbnail/mti-electronics.webp" />
+                <img alt="GRIR Platform" loading="lazy" width="400" height="500"
+                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                  src="https://www.tajmirul.site/projects/thumbnail/epikcart.jpg" />
+                <img alt="Optimus ERP" loading="lazy" width="400" height="500"
+                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                  src="https://www.tajmirul.site/projects/thumbnail/resume-roaster.jpg" />
+                <img alt="Ruckkus Hiring" loading="lazy" width="400" height="500"
+                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                  src="https://www.tajmirul.site/projects/thumbnail/property-pro.jpg" />
+              </div>
+
+              <div class="flex flex-col max-md:gap-10">
+                <!-- Project item 1 -->
+                <a class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                  href="mailto:saipranithsunny@gmail.com" target="_blank" data-index="0">
+                  <div class="flex gap-2 md:gap-5">
+                    <div class="font-anton text-muted-foreground text-xl">_ 01 .</div>
+                    <div>
+                      <h4
+                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                        WFM Migration
+                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <path id="arrow-line" d="M10 14 21 3"></path>
+                            <path id="arrow-curb" d="M15 3h6v6"></path>
+                          </svg>
+                        </span>
+                      </h4>
+                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                        <div class="gap-3 flex items-center">
+                          <span>AlloyDB &amp; DB2</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>MyBatis &amp; JDBC</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>Java 8</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Project item 2 -->
+                <a class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                  href="mailto:saipranithsunny@gmail.com" target="_blank" data-index="1">
+                  <div class="flex gap-2 md:gap-5">
+                    <div class="font-anton text-muted-foreground text-xl">_ 02 .</div>
+                    <div>
+                      <h4
+                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                        GRIR Platform
+                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <path id="arrow-line" d="M10 14 21 3"></path>
+                            <path id="arrow-curb" d="M15 3h6v6"></path>
+                          </svg>
+                        </span>
+                      </h4>
+                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                        <div class="gap-3 flex items-center">
+                          <span>Spring Boot</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>Azure Service Bus</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>REST APIs &amp; Celonis</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Project item 3 -->
+                <a class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                  href="mailto:saipranithsunny@gmail.com" target="_blank" data-index="2">
+                  <div class="flex gap-2 md:gap-5">
+                    <div class="font-anton text-muted-foreground text-xl">_ 03 .</div>
+                    <div>
+                      <h4
+                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                        Optimus ERP
+                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <path id="arrow-line" d="M10 14 21 3"></path>
+                            <path id="arrow-curb" d="M15 3h6v6"></path>
+                          </svg>
+                        </span>
+                      </h4>
+                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                        <div class="gap-3 flex items-center">
+                          <span>RESTful APIs</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>PostgreSQL &amp; MySQL</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>Spring Boot</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Project item 4 -->
+                <a class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                  href="mailto:saipranithsunny@gmail.com" target="_blank" data-index="3">
+                  <div class="flex gap-2 md:gap-5">
+                    <div class="font-anton text-muted-foreground text-xl">_ 04 .</div>
+                    <div>
+                      <h4
+                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                        Ruckkus Hiring
+                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <path id="arrow-line" d="M10 14 21 3"></path>
+                            <path id="arrow-curb" d="M15 3h6v6"></path>
+                          </svg>
+                        </span>
+                      </h4>
+                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                        <div class="gap-3 flex items-center">
+                          <span>Spring Boot</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>Spring Security</span>
+                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        </div>
+                        <div class="gap-3 flex items-center">
+                          <span>JUnit &amp; Swagger</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+        </section>
+
+        <!-- Section: Footer / Contact -->
+        <footer class="text-center pb-5" id="contact">
+          <div class="container">
+            <p class="text-lg text-muted-foreground slide-up-and-fade">Have a project in mind?</p>
+            <a href="mailto:saipranithsunny@gmail.com"
+              class="text-3xl sm:text-4xl font-anton inline-block mt-5 mb-10 hover:underline hover:text-white text-white slide-up-and-fade">
+              saipranithsunny@gmail.com
+            </a>
+
+            <div class="slide-up-and-fade">
+              <a href="https://github.com/Msaipranith/Portfolio" target="_blank"
+                class="leading-none text-muted-foreground hover:underline hover:text-white text-sm">
+                &copy; Copyright Mugala Sai Pranith
+                <!-- <div class="flex items-center justify-center gap-5 pt-1">
+                  <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-star">
+                      <path
+                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
+                      </path>
+                    </svg> 197
+                  </span>
+                  <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="lucide lucide-git-fork">
+                      <circle cx="12" cy="18" r="3"></circle>
+                      <circle cx="6" cy="6" r="3"></circle>
+                      <circle cx="18" cy="6" r="3"></circle>
+                      <path d="M18 9a9 9 0 0 1-9 9"></path>
+                      <path d="M12 12v3"></path>
+                    </svg> 50
+                  </span>
+                </div> -->
+              </a>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+  </main>
+
+  <!-- GSAP & Lenis Smooth Scroll CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+  <!-- Script Entry -->
+  <script src="app.js"></script>
+</body>
+
+</html>

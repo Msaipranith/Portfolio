@@ -1,0 +1,340 @@
+/* -------------------------------------------------------------
+ * 100% AUTHENTIC PORTFOLIO STYLE ENGINE (VANILLA CSS)
+ * Crafted for Tajmirul Islam - exact replica style rules
+ * ------------------------------------------------------------- */
+
+/* Reset & Root variables */
+*, :after, :before {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
+:root {
+  --background: 0 0% 13%;            /* Obsidian Charcoal: hsl(0, 0%, 13%) */
+  --background-light: 0 0% 19%;      /* Lighter Charcoal: hsl(0, 0%, 19%) */
+  --foreground: 0 0% 87%;            /* Muted Off-white: hsl(0, 0%, 87%) */
+  
+  --primary: 140 100% 47%;           /* Electric Neon Emerald Green */
+  --primary-foreground: 0 0% 13%;
+  
+  --secondary: 193 100% 47%;         /* Glowing Neon Sky Cyan */
+  --secondary-foreground: 0 0% 13%;
+  
+  --border: 0 0% 24%;
+  --muted-foreground: 0 0% 71%;
+  
+  --font-anton: 'Anton', sans-serif;
+  --font-roboto-flex: 'Roboto Flex', sans-serif;
+}
+
+/* Base Body Styles */
+html {
+  background-color: #000000;
+}
+
+body {
+  overflow-x: hidden;
+  scroll-behavior: initial; /* Controlled by Lenis scroll trigger */
+  background-color: transparent !important;
+  color: hsl(var(--foreground));
+  font-family: var(--font-roboto-flex);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Complete cursor hiding rules */
+* {
+  cursor: none !important;
+  border-color: hsl(var(--border));
+}
+
+/* Hide scrollbar entirely */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------------------------------------------------------------
+ * 1. FLUID INTERACTIVE CURSOR ELEMENTS
+ * ------------------------------------------------------------- */
+#custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+#custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid hsl(var(--primary));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom Cursor hovered active states */
+#custom-cursor-ring.cursor-active {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(0, 240, 76, 0.08);
+  border-color: rgba(0, 240, 76, 0.4);
+}
+
+#custom-cursor-dot.cursor-active {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* Layout Container width rules */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+@media (min-width: 1148px) {
+  .container {
+    max-width: 1148px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.font-anton {
+  font-family: var(--font-anton);
+}
+
+.text-primary {
+  color: hsl(var(--primary));
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Section paddings */
+.py-section {
+  padding-top: 250px;
+  padding-bottom: 250px;
+}
+
+.pb-section {
+  padding-bottom: 250px;
+}
+
+/* Custom spin animation for flower SVG */
+@keyframes spin {
+  to { transform: rotate(1turn); }
+}
+
+.animate-spin {
+  animation: spin 7s linear infinite;
+  transform-origin: center;
+}
+
+/* -------------------------------------------------------------
+ * 2. CUBIC PAGE PRELOADER LAYOUTS
+ * ------------------------------------------------------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.preloader-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.preloader-item {
+  height: 100%;
+  width: 10%;
+  background-color: #000000;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 0.85s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.preloader-name {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  font-size: 20vw;
+  line-height: 1;
+  color: hsl(var(--foreground));
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .preloader-name {
+    font-size: 200px;
+  }
+}
+
+.preloader-name .char {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* -------------------------------------------------------------
+ * 3. HAMBURGER STICKY BUTTON MENU
+ * ------------------------------------------------------------- */
+.sticky {
+  position: sticky;
+}
+
+.size-12 {
+  width: 3rem;
+  height: 3rem;
+}
+
+.group:hover .line-top {
+  transform: translate(-50%, -50%) rotate(12deg) translateY(-5px);
+}
+
+.group:hover .line-bottom {
+  transform: translate(-50%, -50%) rotate(-12deg) translateY(5px);
+}
+
+/* Toggle active drawer menu rotation classes */
+.active .line-top {
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
+
+.active .line-bottom {
+  transform: translate(-50%, -50%) rotate(-45deg) !important;
+}
+
+/* Fullscreen Navigation drawer slide styles */
+#menu-drawer {
+  background-color: hsl(var(--background-light));
+  border-left: 1px solid hsl(var(--border));
+  transition: transform 0.7s cubic-bezier(0.85, 0, 0.15, 1);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+}
+
+#menu-drawer.active {
+  transform: translateX(0) !important;
+}
+
+#menu-overlay-bg.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* -------------------------------------------------------------
+ * 4. BANNER ELEMENTS & STATS
+ * ------------------------------------------------------------- */
+#banner-arrow-svg {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: pulse 1.8s infinite;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Stack badges flex grid custom styling */
+.sm\:col-span-7 .slide-up {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem 1.25rem;
+  border-radius: 80px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.sm\:col-span-7 .slide-up:hover {
+  border-color: hsl(var(--primary));
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* -------------------------------------------------------------
+ * 5. SELECTED PROJECTS FOLLOW HOVER THUMBNAIL EFFECT
+ * ------------------------------------------------------------- */
+.project-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: none;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+#project-hover-container {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+
+/* Experience Cards layouts */
+.experience-item {
+  border-bottom: 1px solid hsl(var(--border));
+  padding-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+}
+
+.experience-item:hover {
+  transform: translateX(8px);
+}
+
+/* Footer bottom layouts credits */
+footer svg {
+  color: hsl(var(--muted-foreground));
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover svg {
+  color: hsl(var(--primary));
+  transform: scale(1.15);
+}
+
+/* Helper Utilities scale rules */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.grow { flex-grow: 1; }
+.text-white { color: #FFFFFF !important; }
+.text-transparent { color: transparent !important; }
+
+/* Slide up and fade reveals on active states */
+.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}

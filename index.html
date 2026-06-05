@@ -314,6 +314,16 @@
                 <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">8K+</h5>
                 <p class="text-muted-foreground text-sm">Hours Worked</p>
               </div>
+              <!-- Visitor Counter Stat -->
+              <div class="slide-up-and-fade visitor-stat-block">
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5" id="banner-visitor-count">
+                  <span class="visitor-count-dots">···</span>
+                </h5>
+                <p class="text-muted-foreground text-sm flex items-center justify-end gap-1.5">
+                  <span class="visitor-live-dot"></span>
+                  Total Visitors
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -326,11 +336,12 @@
               is high-performing, secure, and scalable.
             </h2>
 
-            <p class="pb-3 border-b border-border text-muted-foreground slide-up-and-fade">Engineer. Architect. Problem Solver.</p>
+            <p class="pb-3 border-b border-border text-muted-foreground slide-up-and-fade">Engineer. Architect. Problem
+              Solver.</p>
 
             <div class="grid md:grid-cols-12 mt-9 gap-8">
               <div class="md:col-span-5 slide-up-and-fade">
-                <p class="text-5xl font-anton text-white tracking-wide uppercase leading-none mb-6">HI, I'M PRANITH.</p>
+                <p class="text-5xl font-anton text-white tracking-wide uppercase leading-none mb-6">I'M PRANITH.</p>
                 <div class="space-y-4 border-l border-primary/30 pl-4 mt-6">
                   <div class="flex items-center gap-3">
                     <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
@@ -615,8 +626,7 @@
               <!-- Floating Thumbnail Follow cursor element (fixed so it stays in viewport) -->
               <div
                 class="max-md:hidden fixed z-[999] pointer-events-none overflow-hidden opacity-0 rounded-lg shadow-2xl"
-                style="width: 320px; height: 220px;"
-                id="project-hover-container">
+                style="width: 320px; height: 220px;" id="project-hover-container">
                 <img alt="WFM Migration" loading="lazy" width="400" height="500"
                   class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
                   src="assets/WFM.png" />
@@ -633,7 +643,8 @@
 
               <div class="flex flex-col max-md:gap-10">
                 <!-- Project item 1 -->
-                <div class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                <div
+                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
                   data-index="0">
                   <div class="flex gap-2 md:gap-5">
                     <div class="font-anton text-muted-foreground text-xl">_ 01 .</div>
@@ -668,7 +679,8 @@
                 </div>
 
                 <!-- Project item 2 -->
-                <div class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                <div
+                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
                   data-index="1">
                   <div class="flex gap-2 md:gap-5">
                     <div class="font-anton text-muted-foreground text-xl">_ 02 .</div>
@@ -703,7 +715,8 @@
                 </div>
 
                 <!-- Project item 3 -->
-                <div class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                <div
+                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
                   data-index="2">
                   <div class="flex gap-2 md:gap-5">
                     <div class="font-anton text-muted-foreground text-xl">_ 03 .</div>
@@ -738,7 +751,8 @@
                 </div>
 
                 <!-- Project item 4 -->
-                <div class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                <div
+                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
                   data-index="3">
                   <div class="flex gap-2 md:gap-5">
                     <div class="font-anton text-muted-foreground text-xl">_ 04 .</div>
@@ -783,6 +797,22 @@
               class="text-3xl sm:text-4xl font-anton inline-block mt-5 mb-10 hover:underline hover:text-white text-white slide-up-and-fade">
               saipranithsunny@gmail.com
             </a>
+
+            <!-- Visitor Counter Footer Badge -->
+            <div class="visitor-footer-badge slide-up-and-fade" id="visitor-footer-badge">
+              <div class="visitor-badge-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="visitor-badge-icon">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <span class="visitor-badge-label">Visitors</span>
+                <span class="visitor-badge-divider"></span>
+                <span class="visitor-badge-count" id="footer-visitor-count">—</span>
+                <span class="visitor-badge-live"></span>
+              </div>
+            </div>
 
             <div class="slide-up-and-fade">
               <a href="https://github.com/Msaipranith/Portfolio" target="_blank"

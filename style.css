@@ -338,3 +338,127 @@ footer a:hover svg {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+
+/* -------------------------------------------------------------
+ * 6. VISITOR COUNTER COMPONENTS
+ * ------------------------------------------------------------- */
+
+/* --- Live pulsing dot (banner stat label) --- */
+.visitor-live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  box-shadow: 0 0 6px hsl(var(--primary));
+  animation: visitorPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes visitorPulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 6px hsl(var(--primary)); }
+  50%       { opacity: 0.5; transform: scale(1.4); box-shadow: 0 0 14px hsl(var(--primary)); }
+}
+
+/* --- Loading dots animation inside banner counter --- */
+.visitor-count-dots {
+  display: inline-block;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  animation: visitorDotsFlash 1.2s steps(1, end) infinite;
+}
+
+@keyframes visitorDotsFlash {
+  0%   { opacity: 0.2; }
+  33%  { opacity: 0.6; }
+  66%  { opacity: 0.2; }
+  100% { opacity: 0.5; }
+}
+
+/* --- Odometer number roll-in keyframe --- */
+@keyframes visitorRollIn {
+  from { transform: translateY(-60%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.visitor-number-revealed {
+  display: inline-block;
+  animation: visitorRollIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Banner stat block (same rhythm as existing stats) --- */
+.visitor-stat-block {
+  position: relative;
+}
+
+.visitor-stat-block h5 {
+  overflow: hidden;
+  line-height: 1;
+}
+
+/* --- Footer glassmorphism badge --- */
+.visitor-footer-badge {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.visitor-badge-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(0, 240, 76, 0.06);
+  border: 1px solid rgba(0, 240, 76, 0.22);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 18px rgba(0, 240, 76, 0.08), inset 0 0 10px rgba(0, 240, 76, 0.04);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.visitor-badge-inner:hover {
+  border-color: rgba(0, 240, 76, 0.45);
+  box-shadow: 0 0 28px rgba(0, 240, 76, 0.18), inset 0 0 14px rgba(0, 240, 76, 0.07);
+}
+
+.visitor-badge-icon {
+  color: hsl(var(--primary));
+  flex-shrink: 0;
+}
+
+.visitor-badge-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+
+.visitor-badge-divider {
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background-color: hsl(var(--border));
+  border-radius: 1px;
+}
+
+.visitor-badge-count {
+  font-family: var(--font-anton);
+  font-size: 0.9rem;
+  color: hsl(var(--primary));
+  letter-spacing: 0.06em;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.visitor-badge-live {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  box-shadow: 0 0 5px hsl(var(--primary));
+  animation: visitorPulse 2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}

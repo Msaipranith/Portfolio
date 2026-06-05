@@ -469,4 +469,75 @@ document.addEventListener('DOMContentLoaded', () => {
     loop();
   }
 
+  /* ==========================================================
+   * 8. VISITOR COUNTER — CountAPI (Every Page Load = +1)
+   * ==========================================================
+   * Uses api.counterapi.dev (free, persistent, no-auth).
+   * Increments on every single page open, on any host.
+   * ========================================================== */
+
+  (function initVisitorCounter() {
+    const NAMESPACE = 'msaipranith';
+    const KEY       = 'portfolio-visitor-count';
+    const HIT_URL   = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
+
+    const bannerEl = document.getElementById('banner-visitor-count');
+    const footerEl = document.getElementById('footer-visitor-count');
+
+    // Animate a counter element from 0 → targetValue with ease-out
+    function animateCount(el, targetValue) {
+      if (!el) return;
+      const duration  = 1800;
+      const startTime = performance.now();
+
+      function step(now) {
+        const elapsed  = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3);
+        const current  = Math.round(targetValue * eased);
+
+        el.innerHTML = `<span class="visitor-number-revealed">${formatCount(current)}</span>`;
+
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    // Format: 1200 → "1.2K", 12000 → "12K", else raw number
+    function formatCount(n) {
+      if (n >= 1000) {
+        const k = n / 1000;
+        return k >= 10 ? `${Math.floor(k)}K` : `${k.toFixed(1)}K`;
+      }
+      return n.toString();
+    }
+
+    // Push count to both display elements
+    function renderCount(count) {
+      animateCount(bannerEl, count);
+      if (footerEl) {
+        setTimeout(() => { footerEl.textContent = formatCount(count); }, 300);
+      }
+    }
+
+    // Every page load → always increment (no deduplication)
+    async function fetchAndRender() {
+      try {
+        const res  = await fetch(HIT_URL, { method: 'GET', mode: 'cors' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const count = (data && typeof data.count === 'number') ? data.count : 0;
+        renderCount(count);
+      } catch (err) {
+        console.warn('[VisitorCounter] Fetch failed:', err.message);
+        if (bannerEl) bannerEl.innerHTML = '<span style="opacity:0.4">—</span>';
+        if (footerEl) footerEl.textContent = '—';
+      }
+    }
+
+    // Slight delay so it never blocks critical page render
+    setTimeout(fetchAndRender, 800);
+  })();
+
 });

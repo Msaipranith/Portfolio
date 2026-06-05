@@ -339,6 +339,355 @@ footer a:hover svg {
   transform: translateY(0) !important;
 }
 
+/* =============================================================
+ * ENHANCEMENTS — Premium Portfolio Features
+ * ============================================================= */
+
+/* -------------------------------------------------------------
+ * GRAIN / NOISE OVERLAY
+ * Fixed cinematic texture across the full site. SVG filter noise,
+ * low opacity, pointer-events none so it never blocks clicks.
+ * ------------------------------------------------------------- */
+#grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  mix-blend-mode: overlay;
+  will-change: transform; /* GPU layer */
+}
+
+/* -------------------------------------------------------------
+ * CURSOR TRAIL PARTICLES (desktop only)
+ * ------------------------------------------------------------- */
+.cursor-trail {
+  position: fixed;
+  top: 0; left: 0;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+/* -------------------------------------------------------------
+ * SCROLL-TO-TOP BUTTON
+ * ------------------------------------------------------------- */
+#scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 1.5rem;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1.5px solid hsl(var(--primary));
+  color: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease,
+              background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+#scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#scroll-to-top:hover {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: 0 0 20px rgba(0, 240, 76, 0.4);
+}
+
+/* -------------------------------------------------------------
+ * SONAR / OPEN-TO-WORK BADGE
+ * ------------------------------------------------------------- */
+.otw-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.otw-core {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  box-shadow: 0 0 6px hsl(var(--primary));
+  z-index: 1;
+}
+
+.otw-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid hsl(var(--primary));
+  opacity: 0;
+  animation: sonarPulse 2.4s ease-out infinite;
+}
+
+.otw-ring-1 { width: 14px; height: 14px; animation-delay: 0s; }
+.otw-ring-2 { width: 14px; height: 14px; animation-delay: 0.8s; }
+
+@keyframes sonarPulse {
+  0%   { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* -------------------------------------------------------------
+ * PRELOADER PERCENTAGE COUNTER
+ * ------------------------------------------------------------- */
+.preloader-percent {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  font-family: var(--font-anton);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: hsl(var(--muted-foreground));
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+/* -------------------------------------------------------------
+ * TECH MARQUEE TICKER
+ * ------------------------------------------------------------- */
+.marquee-section {
+  overflow: hidden;
+  border-top: 1px solid hsl(var(--border));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 1.25rem 0;
+  background: rgba(255,255,255,0.015);
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding-right: 0; /* gap handled by dot */
+}
+
+.marquee-item {
+  font-family: var(--font-anton);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: hsl(var(--muted-foreground));
+  padding: 0 1.4rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.marquee-track:hover .marquee-item {
+  color: hsl(var(--foreground));
+}
+
+.marquee-dot {
+  color: hsl(var(--primary));
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* -------------------------------------------------------------
+ * ACTIVE NAV INDICATOR
+ * Menu button dot turns bright green for active section
+ * ------------------------------------------------------------- */
+.menu-btn.nav-active > span:first-child {
+  background-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 10px hsl(var(--primary));
+  transform: scale(110%);
+}
+
+/* -------------------------------------------------------------
+ * FOOTER REDESIGN
+ * ------------------------------------------------------------- */
+.footer-cta {
+  padding: 6rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)/0.4), transparent);
+  margin-bottom: 5rem;
+}
+
+.footer-headline-wrap {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.footer-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.footer-headline {
+  font-size: clamp(2.8rem, 8vw, 7rem);
+  line-height: 0.92;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.footer-headline-accent {
+  color: hsl(var(--primary));
+  text-shadow: 0 0 60px rgba(0, 240, 76, 0.25);
+}
+
+.footer-subtext {
+  color: hsl(var(--muted-foreground));
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.footer-cta-links {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.footer-email-link {
+  font-family: var(--font-anton);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: white;
+  letter-spacing: 0.04em;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.footer-email-link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 1px;
+  background: hsl(var(--primary));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.25,1,0.5,1);
+}
+
+.footer-email-link:hover { color: hsl(var(--primary)); }
+.footer-email-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-social-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--border));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social-btn:hover {
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 16px rgba(0,240,76,0.2);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top: 1px solid hsl(var(--border));
+  padding-top: 1.5rem;
+}
+
+.footer-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: hsl(var(--muted-foreground));
+  letter-spacing: 0.04em;
+}
+
+/* -------------------------------------------------------------
+ * PREFERS-REDUCED-MOTION — Accessibility override
+ * All animations & transitions are disabled for users who
+ * prefer reduced motion (system accessibility setting).
+ * ------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-track { animation: none !important; }
+  .otw-ring { animation: none !important; opacity: 0 !important; }
+  #grain-overlay { display: none; }
+  .cursor-trail { display: none; }
+}
+
+
 /* -------------------------------------------------------------
  * 6. VISITOR COUNTER COMPONENTS
  * ------------------------------------------------------------- */

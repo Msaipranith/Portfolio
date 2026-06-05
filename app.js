@@ -540,4 +540,304 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(fetchAndRender, 800);
   })();
 
+  /* ==========================================================
+   * 9. PRELOADER PERCENTAGE COUNTER
+   * Synced to GSAP timeline total duration (≈2.65s) so the
+   * counter reaches 100% exactly when columns disappear.
+   * ========================================================== */
+  (function initPreloaderPercent() {
+    const percentEl    = document.getElementById('preloader-percent');
+    if (!percentEl) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) { percentEl.textContent = '100%'; return; }
+
+    const TOTAL_DURATION = 2650; // ms — matches GSAP timeline
+    const start = performance.now();
+
+    function tick(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / TOTAL_DURATION, 1);
+      percentEl.textContent = Math.floor(progress * 100) + '%';
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }());
+
+  /* ==========================================================
+   * 10. TEXT SCRAMBLE — Banner Title
+   * Characters resolve from random chars → final text with a
+   * staggered per-character reveal (earlier chars resolve first).
+   * Triggered after preloader completes via a timeout.
+   * ========================================================== */
+  (function initTextScramble() {
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!%';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function scramble(el, finalText, duration, delay) {
+      if (!el || reducedMotion) return;
+      setTimeout(() => {
+        const totalFrames = Math.round((duration / 1000) * 60);
+        let frame = 0;
+
+        function tick() {
+          let out = '';
+          for (let i = 0; i < finalText.length; i++) {
+            const resolveAt = Math.floor((i / finalText.length) * totalFrames * 0.72);
+            if (finalText[i] === ' ') { out += ' '; continue; }
+            out += frame >= resolveAt
+              ? finalText[i]
+              : CHARS[Math.floor(Math.random() * CHARS.length)];
+          }
+          el.textContent = out;
+          frame++;
+          if (frame < totalFrames) requestAnimationFrame(tick);
+          else el.textContent = finalText;
+        }
+        requestAnimationFrame(tick);
+      }, delay);
+    }
+
+    // Trigger after preloader is done (preloader timeline ≈ 2.65s)
+    const preloaderDoneAt = 2750; // ms
+    scramble(document.getElementById('scramble-line-1'), 'JAVA BACK-END', 1300, preloaderDoneAt);
+    scramble(document.getElementById('scramble-line-2'), 'DEVELOPER',    1000, preloaderDoneAt + 400);
+  }());
+
+  /* ==========================================================
+   * 11. MAGNETIC CTA BUTTON — "Let's Talk"
+   * Desktop / hover-capable devices only.
+   * Button lerps toward cursor within a 120px proximity zone.
+   * Springs back elastically on mouse leave.
+   * ========================================================== */
+  (function initMagneticBtn() {
+    const btn = document.getElementById('magnetic-btn');
+    if (!btn) return;
+
+    // Skip on touch devices or reduced-motion
+    const isTouch      = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || reducedMotion) return;
+
+    const RADIUS   = 120; // px proximity zone
+    const STRENGTH = 0.38; // max displacement factor
+
+    const moveX = gsap.quickTo(btn, 'x', { duration: 0.5, ease: 'power3.out' });
+    const moveY = gsap.quickTo(btn, 'y', { duration: 0.5, ease: 'power3.out' });
+
+    window.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      const dx   = e.clientX - cx;
+      const dy   = e.clientY - cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < RADIUS) {
+        const f = (1 - dist / RADIUS) * STRENGTH;
+        moveX(dx * f);
+        moveY(dy * f);
+        gsap.to(btn, { scale: 1.04, duration: 0.3, ease: 'power2.out' });
+      } else {
+        moveX(0);
+        moveY(0);
+        gsap.to(btn, { scale: 1, duration: 0.6, ease: 'elastic.out(1, 0.45)' });
+      }
+    });
+  }());
+
+  /* ==========================================================
+   * 12. STATS COUNT-UP ANIMATION
+   * IntersectionObserver fires once per stat element at 50%
+   * visibility. Uses data-target / data-suffix / data-divisor.
+   * 8000 with divisor=1000 → displays as "8K+".
+   * ========================================================== */
+  (function initStatsCountUp() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const statEls = document.querySelectorAll('.stat-number');
+    if (!statEls.length) return;
+
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animate(el) {
+      const target  = parseInt(el.getAttribute('data-target'), 10) || 0;
+      const suffix  = el.getAttribute('data-suffix')  || '';
+      const divisor = parseFloat(el.getAttribute('data-divisor')) || 1;
+
+      if (reducedMotion) {
+        el.textContent = (divisor > 1 ? Math.round(target / divisor) : target) + suffix;
+        return;
+      }
+
+      const duration  = 1800;
+      const startTime = performance.now();
+
+      (function step(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const value    = Math.round(target * easeOut(progress));
+        const display  = (divisor > 1 ? Math.round(value / divisor) : value) + suffix;
+        el.textContent = display;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = (divisor > 1 ? Math.round(target / divisor) : target) + suffix;
+      }(performance.now()));
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          observer.unobserve(entry.target); // only once
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statEls.forEach(el => observer.observe(el));
+  }());
+
+  /* ==========================================================
+   * 13. CURSOR TRAIL PARTICLES (desktop only)
+   * 3 fading dots trail the cursor using a position history
+   * array. Each dot tracks a progressively older position,
+   * creating a natural comet tail. GPU-accelerated via GSAP set.
+   * ========================================================== */
+  (function initCursorTrail() {
+    const isTouch      = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || reducedMotion) return;
+
+    const trails = [
+      document.getElementById('cursor-trail-1'),
+      document.getElementById('cursor-trail-2'),
+      document.getElementById('cursor-trail-3'),
+    ].filter(Boolean);
+
+    if (!trails.length) return;
+
+    const history  = [];
+    const DELAYS   = [4, 8, 12]; // history indices each trail tracks
+    let   visible  = false;
+    let   idleTimer;
+
+    window.addEventListener('mousemove', (e) => {
+      history.unshift({ x: e.clientX, y: e.clientY });
+      if (history.length > 16) history.pop();
+
+      if (!visible) {
+        visible = true;
+        trails.forEach(t => (t.style.opacity = '0')); // CSS handles fade in via rAF
+      }
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => { visible = false; }, 150);
+    }, { passive: true });
+
+    (function loop() {
+      trails.forEach((trail, i) => {
+        const pos = history[DELAYS[i]];
+        if (!pos) return;
+        const alpha = visible ? (1 - i * 0.3) * 0.55 : 0;
+        const scale = 1 - i * 0.22;
+        gsap.set(trail, {
+          x:        pos.x,
+          y:        pos.y,
+          xPercent: -50,
+          yPercent: -50,
+          opacity:  alpha,
+          scale,
+        });
+      });
+      requestAnimationFrame(loop);
+    }());
+  }());
+
+  /* ==========================================================
+   * 14. SCROLL-TO-TOP BUTTON
+   * Appears once user scrolls >400px. Uses Lenis scrollTo so
+   * the animation is eased and matches the site's scroll style.
+   * ========================================================== */
+  (function initScrollToTop() {
+    const btn = document.getElementById('scroll-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      btn.classList.toggle('visible', scrolled > 400);
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+      lenis.scrollTo(0, {
+        duration: 1.4,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
+    });
+  }());
+
+  /* ==========================================================
+   * 15. ACTIVE NAV INDICATOR
+   * IntersectionObserver watches each section. When a section
+   * enters the viewport, its corresponding hamburger menu item
+   * gets the .nav-active class (neon green dot highlight).
+   * ========================================================== */
+  (function initActiveNav() {
+    const sectionMap = {
+      'banner':            '#banner',
+      'about-me':          '#about-me',
+      'my-experience':     '#my-experience',
+      'selected-projects': '#selected-projects',
+    };
+
+    function setActive(sectionId) {
+      document.querySelectorAll('.menu-btn').forEach(btn => {
+        const target = btn.getAttribute('data-target');
+        btn.classList.toggle('nav-active', target === sectionMap[sectionId]);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { threshold: 0.3, rootMargin: '-10% 0px -10% 0px' });
+
+    Object.keys(sectionMap).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  }());
+
+  /* ==========================================================
+   * 16. FOOTER YEAR AUTO-FILL
+   * ========================================================== */
+  const footerYearEl = document.getElementById('footer-year');
+  if (footerYearEl) {
+    footerYearEl.textContent = new Date().getFullYear();
+  }
+
+  /* ==========================================================
+   * 17. EMAIL COPY TO CLIPBOARD
+   * "mailto:" links often fail on Windows if no mail app is configured.
+   * Intercept them, copy to clipboard, and show "Copied!".
+   * ========================================================== */
+  const mailtoLinks = document.querySelectorAll('a[href^="mailto:"]');
+  mailtoLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = link.getAttribute('href').replace('mailto:', '');
+      
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = link.innerHTML;
+        link.textContent = 'Copied to clipboard!';
+        link.style.color = 'hsl(var(--primary))';
+        
+        setTimeout(() => {
+          link.innerHTML = originalText;
+          link.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        // Fallback if clipboard fails
+        window.location.href = link.getAttribute('href');
+      });
+    });
+  });
+
 });
+

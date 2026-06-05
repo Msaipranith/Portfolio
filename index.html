@@ -56,6 +56,22 @@
   <div id="custom-cursor-dot"></div>
   <div id="custom-cursor-ring"></div>
 
+  <!-- Cursor Trail Particles (desktop only) -->
+  <div class="cursor-trail" id="cursor-trail-1"></div>
+  <div class="cursor-trail" id="cursor-trail-2"></div>
+  <div class="cursor-trail" id="cursor-trail-3"></div>
+
+  <!-- Cinematic Grain / Noise Overlay -->
+  <div id="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-to-top" aria-label="Scroll to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 15l-6-6-6 6"></path>
+    </svg>
+  </button>
+
   <!-- Fixed High-Performance Space Parallax Canvas Background -->
   <canvas id="space-canvas" class="fixed inset-0 w-full h-full z-[-1] pointer-events-none bg-black"></canvas>
 
@@ -94,6 +110,8 @@
       <span class="inline-block translate-y-full char">L</span>
       <span class="inline-block translate-y-full char">A</span>
     </p>
+    <!-- Preloader percentage counter -->
+    <div class="preloader-percent" id="preloader-percent">0%</div>
   </div>
 
   <!-- Header sticky toggle menu -->
@@ -246,8 +264,8 @@
           <div class="container h-full flex justify-between items-center max-md:flex-col max-md:py-16">
             <div class="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
               <h1 class="banner-title leading-[.95] text-6xl sm:text-[80px] font-anton slide-up-and-fade">
-                <span class="text-primary">JAVA BACK-END</span><br />
-                <span class="ml-4 text-white">DEVELOPER</span>
+                <span class="text-primary" id="scramble-line-1">JAVA BACK-END</span><br />
+                <span class="ml-4 text-white" id="scramble-line-2">DEVELOPER</span>
               </h1>
 
               <p class="banner-description mt-6 text-lg text-muted-foreground slide-up-and-fade leading-relaxed">
@@ -258,13 +276,31 @@
               </p>
 
               <div class="flex flex-wrap items-center gap-4">
-                <a class="group h-12 px-8 inline-flex justify-center items-center gap-2 text-lg uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 mt-9 banner-button slide-up-and-fade"
+                <!-- Magnetic CTA: Let's Talk -->
+                <a id="magnetic-btn"
+                  class="group h-12 px-8 inline-flex justify-center items-center gap-2 text-lg uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden bg-primary text-primary-foreground hover:bg-primary/90 mt-9 banner-button slide-up-and-fade"
                   target="_blank" rel="noopener noreferrer" href="https://www.freelancer.in/u/saipranith6945">
                   <span
                     class="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150 z-0"></span>
                   <span class="z-[1]">Let's Talk</span>
                 </a>
 
+                <!-- Resume Download -->
+                <a class="group h-12 px-6 inline-flex justify-center items-center gap-2 text-base uppercase font-anton tracking-widest outline-none relative overflow-hidden border-2 border-primary text-primary mt-9 banner-button slide-up-and-fade rounded-sm hover:text-black transition-colors duration-300"
+                  href="assets/resume.pdf" download="Mugala_Sai_Pranith_Resume.pdf" aria-label="Download Resume">
+                  <span
+                    class="absolute top-[200%] left-0 right-0 h-full bg-primary rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150 z-0"></span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    class="relative z-[1]">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span class="relative z-[1]">Resume</span>
+                </a>
+
+                <!-- LinkedIn -->
                 <a class="group w-12 h-12 inline-flex justify-center items-center outline-none transition-all duration-300 relative overflow-hidden border-2 border-primary text-primary mt-9 banner-button slide-up-and-fade rounded-sm"
                   target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/pranith0418/"
                   aria-label="LinkedIn">
@@ -279,6 +315,21 @@
                   </span>
                 </a>
 
+                <!-- GitHub -->
+                <a class="group w-12 h-12 inline-flex justify-center items-center outline-none transition-all duration-300 relative overflow-hidden border-2 border-primary text-primary mt-9 banner-button slide-up-and-fade rounded-sm"
+                  target="_blank" rel="noopener noreferrer" href="https://github.com/Msaipranith" aria-label="GitHub">
+                  <span
+                    class="absolute top-[200%] left-0 right-0 h-full bg-primary rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150 z-0"></span>
+                  <span class="relative z-[1] text-primary group-hover:text-black transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                      fill="currentColor">
+                      <path
+                        d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                    </svg>
+                  </span>
+                </a>
+
+                <!-- Email -->
                 <a class="group w-12 h-12 inline-flex justify-center items-center outline-none transition-all duration-300 relative overflow-hidden border-2 border-primary text-primary mt-9 banner-button slide-up-and-fade rounded-sm"
                   href="mailto:saipranithsunny@gmail.com" aria-label="Email">
                   <span
@@ -293,8 +344,13 @@
                 </a>
               </div>
 
-              <div class="flex items-center gap-2 mt-3 slide-up-and-fade">
-                <span class="size-3 rounded-full bg-white animate-pulse"></span>
+              <!-- Sonar pulse open-to-work badge -->
+              <div class="flex items-center gap-2.5 mt-4 slide-up-and-fade">
+                <span class="otw-badge" aria-hidden="true">
+                  <span class="otw-ring otw-ring-1"></span>
+                  <span class="otw-ring otw-ring-2"></span>
+                  <span class="otw-core"></span>
+                </span>
                 <span class="text-sm text-muted-foreground">Available for full-time opportunities</span>
               </div>
             </div>
@@ -303,15 +359,18 @@
             <div
               class="md:absolute bottom-[10%] right-[4%] flex md:flex-col gap-4 md:gap-8 text-center md:text-right max-md:mt-8">
               <div class="slide-up-and-fade">
-                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">4+</h5>
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5 stat-number" data-target="4"
+                  data-suffix="+">4+</h5>
                 <p class="text-muted-foreground text-sm">Years of Experience</p>
               </div>
               <div class="slide-up-and-fade">
-                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">6+</h5>
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5 stat-number" data-target="6"
+                  data-suffix="+">6+</h5>
                 <p class="text-muted-foreground text-sm">Completed Projects</p>
               </div>
               <div class="slide-up-and-fade">
-                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5">8K+</h5>
+                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5 stat-number" data-target="8000"
+                  data-suffix="K+" data-divisor="1000">8K+</h5>
                 <p class="text-muted-foreground text-sm">Hours Worked</p>
               </div>
               <!-- Visitor Counter Stat -->
@@ -381,6 +440,45 @@
             </div>
           </div>
         </section>
+
+        <!-- Section: Tech Marquee Ticker -->
+        <div class="marquee-section" aria-hidden="true">
+          <div class="marquee-track">
+            <div class="marquee-content" id="marquee-inner">
+              <span class="marquee-item">JAVA</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">SPRING BOOT</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">MICROSERVICES</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">APACHE KAFKA</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">POSTGRESQL</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">ALLOYDB</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">MYSQL</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">DOCKER</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">KUBERNETES</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">REST APIs</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">SPRING SECURITY</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">HIBERNATE</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">AWS</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">JUNIT &amp; MOCKITO</span><span class="marquee-dot">•</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-content" aria-hidden="true">
+              <span class="marquee-item">JAVA</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">SPRING BOOT</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">MICROSERVICES</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">APACHE KAFKA</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">POSTGRESQL</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">ALLOYDB</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">MYSQL</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">DOCKER</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">KUBERNETES</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">REST APIs</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">SPRING SECURITY</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">HIBERNATE</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">AWS</span><span class="marquee-dot">•</span>
+              <span class="marquee-item">JUNIT &amp; MOCKITO</span><span class="marquee-dot">•</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Section: My Stack -->
         <section class="section" id="my-stack">
@@ -789,59 +887,90 @@
             </div>
         </section>
 
-        <!-- Section: Footer / Contact -->
-        <footer class="text-center pb-5" id="contact">
+        <!-- Section: Footer Redesign / CTA -->
+        <footer id="contact" class="footer-cta">
           <div class="container">
-            <p class="text-lg text-muted-foreground slide-up-and-fade">Have a project in mind?</p>
-            <a href="mailto:saipranithsunny@gmail.com"
-              class="text-3xl sm:text-4xl font-anton inline-block mt-5 mb-10 hover:underline hover:text-white text-white slide-up-and-fade">
-              saipranithsunny@gmail.com
-            </a>
 
-            <!-- Visitor Counter Footer Badge -->
-            <div class="visitor-footer-badge slide-up-and-fade" id="visitor-footer-badge">
-              <div class="visitor-badge-inner">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="visitor-badge-icon">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-                <span class="visitor-badge-label">Visitors</span>
-                <span class="visitor-badge-divider"></span>
-                <span class="visitor-badge-count" id="footer-visitor-count">—</span>
-                <span class="visitor-badge-live"></span>
-              </div>
+            <!-- Top border rule -->
+            <div class="footer-rule"></div>
+
+            <!-- Main CTA Headline -->
+            <div class="footer-headline-wrap slide-reveal">
+              <p class="footer-eyebrow">What's Next?</p>
+              <h2 class="footer-headline font-anton">LET'S BUILD SOMETHING<br /><span
+                  class="footer-headline-accent">GREAT</span></h2>
+              <p class="footer-subtext">
+                Open to discussing backend engineering opportunities,<br class="hidden sm:block" />
+                scalable systems, and impactful products.
+              </p>
             </div>
 
-            <div class="slide-up-and-fade">
-              <a href="https://github.com/Msaipranith/Portfolio" target="_blank"
-                class="leading-none text-muted-foreground hover:underline hover:text-white text-sm">
-                &copy; Copyright Sai Pranith Mugala
-                <!-- <div class="flex items-center justify-center gap-5 pt-1">
-                  <span class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="lucide lucide-star">
-                      <path
-                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z">
-                      </path>
-                    </svg> 197
-                  </span>
-                  <span class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="lucide lucide-git-fork">
-                      <circle cx="12" cy="18" r="3"></circle>
-                      <circle cx="6" cy="6" r="3"></circle>
-                      <circle cx="18" cy="6" r="3"></circle>
-                      <path d="M18 9a9 9 0 0 1-9 9"></path>
-                      <path d="M12 12v3"></path>
-                    </svg> 50
-                  </span>
-                </div> -->
+            <!-- CTA Links -->
+            <div class="footer-cta-links slide-reveal">
+              <a href="mailto:saipranithsunny@gmail.com" class="footer-email-link">
+                saipranithsunny@gmail.com
               </a>
             </div>
+
+            <!-- Social Icon Row -->
+            <div class="footer-socials slide-reveal">
+              <a href="https://github.com/Msaipranith" target="_blank" rel="noopener noreferrer"
+                class="footer-social-btn" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/pranith0418/" target="_blank" rel="noopener noreferrer"
+                class="footer-social-btn" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+              </a>
+              <a href="https://www.freelancer.in/u/saipranith6945" target="_blank" rel="noopener noreferrer"
+                class="footer-social-btn" aria-label="Freelancer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Bottom bar: availability + visitor counter + copyright -->
+            <div class="footer-bottom slide-reveal">
+              <div class="footer-availability">
+                <span class="otw-badge" aria-hidden="true">
+                  <span class="otw-ring otw-ring-1"></span>
+                  <span class="otw-ring otw-ring-2"></span>
+                  <span class="otw-core"></span>
+                </span>
+                <span>Available for opportunities</span>
+              </div>
+
+              <!-- Visitor Counter Footer Badge -->
+              <div class="visitor-footer-badge" id="visitor-footer-badge">
+                <div class="visitor-badge-inner">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="visitor-badge-icon">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <span class="visitor-badge-label">Visitors</span>
+                  <span class="visitor-badge-divider"></span>
+                  <span class="visitor-badge-count" id="footer-visitor-count">—</span>
+                  <span class="visitor-badge-live"></span>
+                </div>
+              </div>
+
+              <p class="footer-copy">
+                &copy; <span id="footer-year"></span> Mugala Sai Pranith
+              </p>
+            </div>
+
           </div>
         </footer>
 

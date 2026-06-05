@@ -470,31 +470,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================
-   * 8. VISITOR COUNTER — CountAPI (Every Page Load = +1)
+   * 8. VISITOR COUNTER — Real-Time Live Polling
    * ==========================================================
-   * Uses api.counterapi.dev (free, persistent, no-auth).
-   * Increments on every single page open, on any host.
+   * On page load  → calls /up  (increments + returns new count)
+   * Every 10 secs → calls /get (read-only, updates display live
+   *                 if another visitor joined while page is open)
+   * Works on every host: localhost, GitHub Pages, Netlify, etc.
    * ========================================================== */
 
   (function initVisitorCounter() {
-    const NAMESPACE = 'msaipranith';
-    const KEY       = 'portfolio-visitor-count';
-    const HIT_URL   = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
+    const NAMESPACE    = 'msaipranith';
+    const KEY          = 'portfolio-visitor-count';
+    const HIT_URL      = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
+    const GET_URL      = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`;
+    const POLL_INTERVAL = 10000; // poll every 10 seconds
 
     const bannerEl = document.getElementById('banner-visitor-count');
     const footerEl = document.getElementById('footer-visitor-count');
 
-    // Animate a counter element from 0 → targetValue with ease-out
-    function animateCount(el, targetValue) {
+    let currentCount = 0; // track displayed count to detect real changes
+
+    // ── Animate banner from its current displayed value → newValue ──
+    function animateCount(el, fromValue, toValue) {
       if (!el) return;
-      const duration  = 1800;
+      const duration  = 900; // faster for live updates
       const startTime = performance.now();
 
       function step(now) {
         const elapsed  = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const eased    = 1 - Math.pow(1 - progress, 3);
-        const current  = Math.round(targetValue * eased);
+        const current  = Math.round(fromValue + (toValue - fromValue) * eased);
 
         el.innerHTML = `<span class="visitor-number-revealed">${formatCount(current)}</span>`;
 
@@ -504,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
       requestAnimationFrame(step);
     }
 
-    // Format: 1200 → "1.2K", 12000 → "12K", else raw number
+    // ── Format: 1200 → "1.2K", 12000 → "12K", else raw ──
     function formatCount(n) {
       if (n >= 1000) {
         const k = n / 1000;
@@ -513,31 +519,61 @@ document.addEventListener('DOMContentLoaded', () => {
       return n.toString();
     }
 
-    // Push count to both display elements
-    function renderCount(count) {
-      animateCount(bannerEl, count);
+    // ── Update both display elements smoothly ──
+    function updateDisplay(newCount) {
+      const prev = currentCount;
+      currentCount = newCount;
+
+      // Banner: animate from previous value → new value
+      animateCount(bannerEl, prev, newCount);
+
+      // Footer badge: instant update
       if (footerEl) {
-        setTimeout(() => { footerEl.textContent = formatCount(count); }, 300);
+        setTimeout(() => { footerEl.textContent = formatCount(newCount); }, 200);
       }
     }
 
-    // Every page load → always increment (no deduplication)
-    async function fetchAndRender() {
+    // ── On page load: increment counter, display result ──
+    async function initialHit() {
       try {
         const res  = await fetch(HIT_URL, { method: 'GET', mode: 'cors' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        const data  = await res.json();
         const count = (data && typeof data.count === 'number') ? data.count : 0;
-        renderCount(count);
+        updateDisplay(count);
+        // Start live polling after first successful hit
+        startPolling();
       } catch (err) {
-        console.warn('[VisitorCounter] Fetch failed:', err.message);
+        console.warn('[VisitorCounter] Initial hit failed:', err.message);
         if (bannerEl) bannerEl.innerHTML = '<span style="opacity:0.4">—</span>';
         if (footerEl) footerEl.textContent = '—';
       }
     }
 
+    // ── Poll every 10s: silently read count, update if changed ──
+    function startPolling() {
+      setInterval(async () => {
+        // Skip polling if tab is hidden (saves requests, resumes when visible)
+        if (document.hidden) return;
+
+        try {
+          const res  = await fetch(GET_URL, { method: 'GET', mode: 'cors' });
+          if (!res.ok) return;
+          const data  = await res.json();
+          const count = (data && typeof data.count === 'number') ? data.count : 0;
+
+          // Only update UI if count actually changed (another visitor joined)
+          if (count !== currentCount) {
+            updateDisplay(count);
+          }
+        } catch (_) {
+          // Silent fail — polling errors don't break anything
+        }
+      }, POLL_INTERVAL);
+    }
+
     // Slight delay so it never blocks critical page render
-    setTimeout(fetchAndRender, 800);
+    setTimeout(initialHit, 800);
   })();
 
 });

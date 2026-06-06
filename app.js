@@ -950,5 +950,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }());
 
+  /* ==========================================================
+   * 20. JAVASCRIPT MARQUEE TICKER (Mobile Reliable)
+   * ========================================================== */
+  (function initMarquee() {
+    const track = document.querySelector('.marquee-track');
+    if (!track) return;
+
+    let position = 0;
+    const speed = 1.2; // Adjust speed as needed
+    let isPaused = false;
+
+    // Pause on hover for fine pointer devices
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      track.addEventListener('mouseenter', () => isPaused = true);
+      track.addEventListener('mouseleave', () => isPaused = false);
+    }
+
+    function step() {
+      if (!isPaused) {
+        position -= speed;
+        // Since we have two identical .marquee-content blocks,
+        // we reset when we've scrolled exactly half the track width
+        if (position <= -(track.scrollWidth / 2)) {
+          position = 0;
+        }
+        track.style.transform = \`translate3d(\${position}px, 0, 0)\`;
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }());
+
 });
 

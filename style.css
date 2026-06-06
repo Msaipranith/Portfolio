@@ -550,7 +550,8 @@ html.theme-light .marquee-section {
   display: flex;
   flex-wrap: nowrap;
   width: max-content;
-  /* Animation is driven by JS rAF for reliable mobile support */
+  animation: marqueeScroll 28s linear infinite;
+  -webkit-animation: marqueeScroll 28s linear infinite;
   will-change: transform;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -591,6 +592,16 @@ html.theme-light .marquee-section {
   font-size: 0.65rem;
   flex-shrink: 0;
   opacity: 0.7;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@-webkit-keyframes marqueeScroll {
+  from { -webkit-transform: translateX(0); }
+  to   { -webkit-transform: translateX(-50%); }
 }
 
 /* -------------------------------------------------------------
@@ -752,6 +763,7 @@ html.theme-light .footer-headline-accent {
     transition-duration: 0.01ms !important;
   }
 
+  .marquee-track { animation: none !important; }
   .otw-ring { animation: none !important; opacity: 0 !important; }
   #grain-overlay { display: none; }
   .cursor-trail { display: none; }

@@ -203,6 +203,10 @@ body {
   transition: transform 0.85s cubic-bezier(0.85, 0, 0.15, 1);
 }
 
+html.theme-light .preloader-item {
+  background-color: hsl(214, 32%, 97%);
+}
+
 .preloader-name {
   position: relative;
   z-index: 10;

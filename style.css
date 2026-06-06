@@ -12,7 +12,8 @@
 :root {
   --background: 0 0% 13%;            /* Obsidian Charcoal: hsl(0, 0%, 13%) */
   --background-light: 0 0% 19%;      /* Lighter Charcoal: hsl(0, 0%, 19%) */
-  --foreground: 0 0% 87%;            /* Muted Off-white: hsl(0, 0%, 87%) */
+  --foreground: 0 0% 100%;           /* Restore to Pure White */
+  --body-foreground: 0 0% 87%;       /* Body text off-white */
   
   --primary: 140 100% 47%;           /* Electric Neon Emerald Green */
   --primary-foreground: 0 0% 13%;
@@ -27,19 +28,41 @@
   --font-roboto-flex: 'Roboto Flex', sans-serif;
 }
 
+:root.theme-light {
+  --background: 210 20% 98%;          /* Soft Off-white background */
+  --background-light: 210 20% 93%;    /* Lighter slate/gray cards background */
+  --foreground: 215 25% 12%;          /* Dark Charcoal text */
+  --body-foreground: 215 25% 12%;    /* Body text dark charcoal */
+  
+  --primary: 142 76% 36%;             /* Rich emerald green for contrast in light mode */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 199 89% 40%;           /* Deep sky blue */
+  --secondary-foreground: 0 0% 100%;
+  
+  --border: 210 20% 86%;              /* Soft slate border */
+  --muted-foreground: 215 16% 47%;    /* Muted slate text */
+}
+
 /* Base Body Styles */
 html {
-  background-color: #000000;
+  background-color: #000000;          /* Original pure black background */
+  transition: background-color 0.3s ease;
+}
+
+.theme-light html {
+  background-color: hsl(var(--background));
 }
 
 body {
   overflow-x: hidden;
   scroll-behavior: initial; /* Controlled by Lenis scroll trigger */
   background-color: transparent !important;
-  color: hsl(var(--foreground));
+  color: hsl(var(--body-foreground)); /* Dynamic body foreground */
   font-family: var(--font-roboto-flex);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Complete cursor hiding rules */
@@ -65,7 +88,7 @@ body {
   background-color: hsl(var(--primary));
   border-radius: 50%;
   pointer-events: none;
-  z-index: 10000;
+  z-index: 1000000; /* Stay above cert modal */
   transform: translate(-50%, -50%);
 }
 
@@ -78,7 +101,7 @@ body {
   border: 1.5px solid hsl(var(--primary));
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999999; /* Stay above cert modal */
   transform: translate(-50%, -50%);
   transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -478,15 +501,30 @@ footer a:hover svg {
   border-top: 1px solid hsl(var(--border));
   border-bottom: 1px solid hsl(var(--border));
   padding: 1.25rem 0;
-  background: rgba(255,255,255,0.015);
+  background: rgba(255, 255, 255, 0.015);
   user-select: none;
+}
+
+.marquee-container {
+  margin-right: 80px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .marquee-container {
+    margin-right: 120px;
+  }
 }
 
 .marquee-track {
   display: flex;
+  flex-wrap: nowrap;
   width: max-content;
   animation: marqueeScroll 28s linear infinite;
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .marquee-track:hover {
@@ -498,6 +536,7 @@ footer a:hover svg {
   align-items: center;
   white-space: nowrap;
   padding-right: 0; /* gap handled by dot */
+  flex-shrink: 0;
 }
 
 .marquee-item {
@@ -569,7 +608,7 @@ footer a:hover svg {
 .footer-headline {
   font-size: clamp(2.8rem, 8vw, 7rem);
   line-height: 0.92;
-  color: white;
+  color: hsl(var(--foreground));
   margin-bottom: 1.5rem;
   text-transform: uppercase;
 }
@@ -577,6 +616,10 @@ footer a:hover svg {
 .footer-headline-accent {
   color: hsl(var(--primary));
   text-shadow: 0 0 60px rgba(0, 240, 76, 0.25);
+}
+
+.theme-light .footer-headline-accent {
+  text-shadow: 0 0 60px rgba(0, 240, 76, 0.1);
 }
 
 .footer-subtext {
@@ -595,7 +638,7 @@ footer a:hover svg {
 .footer-email-link {
   font-family: var(--font-anton);
   font-size: clamp(1.1rem, 3vw, 1.6rem);
-  color: white;
+  color: hsl(var(--foreground));
   letter-spacing: 0.04em;
   position: relative;
   transition: color 0.3s ease;
@@ -810,4 +853,202 @@ footer a:hover svg {
   box-shadow: 0 0 5px hsl(var(--primary));
   animation: visitorPulse 2s ease-in-out infinite;
   animation-delay: 0.6s;
+}
+
+/* -------------------------------------------------------------
+ * THEME SWITCHER & DYNAMIC OVERRIDES
+ * ------------------------------------------------------------- */
+#space-canvas {
+  transition: opacity 0.5s ease;
+}
+.theme-light #space-canvas {
+  opacity: 0.08; /* Fade canvas to keep light mode clean */
+}
+
+#theme-toggle {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid hsl(var(--border));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  border-color: hsl(var(--primary));
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 15px rgba(0, 240, 76, 0.25);
+  transform: scale(1.05);
+}
+
+.theme-light #theme-toggle {
+  background: rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.theme-light #theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 15px rgba(0, 240, 76, 0.15);
+}
+
+/* -------------------------------------------------------------
+ * CERTIFICATIONS SECTION CARDS & MODAL
+ * ------------------------------------------------------------- */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cert-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 2.25rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+  cursor: none;
+}
+
+.cert-card:hover {
+  border-color: hsl(var(--primary));
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 240, 76, 0.08);
+  transform: translateY(-6px);
+}
+
+.theme-light .cert-card {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.theme-light .cert-card:hover {
+  background: rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px rgba(0, 240, 76, 0.06);
+}
+
+/* Modal layout */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content-wrap {
+  width: 90%;
+  max-width: 800px;
+  background: hsl(var(--background-light));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  position: relative;
+  padding: 2.5rem;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-overlay.active .modal-content-wrap {
+  transform: scale(1);
+}
+
+.modal-close-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+  z-index: 100000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+  transform: rotate(90deg);
+}
+
+/* -------------------------------------------------------------
+ * EDUCATION SECTION TIMELINE
+ * ------------------------------------------------------------- */
+.education-timeline {
+  position: relative;
+  border-left: 2px solid hsl(var(--border));
+  padding-left: 2.5rem;
+  margin-left: 1rem;
+}
+
+.education-item {
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.education-item:last-child {
+  margin-bottom: 0;
+}
+
+.education-dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(var(--background));
+  border: 3px solid hsl(var(--primary));
+  transform: translateX(-50%);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.education-item:hover .education-dot {
+  background: hsl(var(--primary));
+  transform: translateX(-50%) scale(1.3);
+  box-shadow: 0 0 12px hsl(var(--primary));
+}
+
+.edu-card {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease, background 0.4s ease;
+}
+
+.edu-card:hover {
+  border-color: hsl(var(--primary));
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 10px 25px rgba(0, 240, 76, 0.05);
+  transform: translateX(8px);
+}
+
+.theme-light .edu-card {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+.theme-light .edu-card:hover {
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 10px 25px rgba(0, 240, 76, 0.03);
 }

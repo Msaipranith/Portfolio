@@ -29,29 +29,35 @@
 }
 
 :root.theme-light {
-  --background: 210 20% 98%;          /* Soft Off-white background */
-  --background-light: 210 20% 93%;    /* Lighter slate/gray cards background */
-  --foreground: 215 25% 12%;          /* Dark Charcoal text */
-  --body-foreground: 215 25% 12%;    /* Body text dark charcoal */
-  
-  --primary: 142 76% 36%;             /* Rich emerald green for contrast in light mode */
+  /* ── Layout backgrounds ─────────────────────────────── */
+  --background:       214 32% 97%;   /* #F4F7FB – cool off-white (slight blue tint) */
+  --background-light: 214 32% 93%;   /* #E8EDF5 – card / drawer background */
+
+  /* ── Typography ─────────────────────────────────────── */
+  --foreground:       220 30% 10%;   /* #111826 – near-black headlines */
+  --body-foreground:  220 20% 22%;   /* #2D3548 – body text, good contrast */
+
+  /* ── Brand accent (electric emerald – slightly darker for readability) */
+  --primary:          152 72% 32%;   /* #16995A – rich emerald on white */
   --primary-foreground: 0 0% 100%;
-  
-  --secondary: 199 89% 40%;           /* Deep sky blue */
+
+  /* ── Secondary accent */
+  --secondary:        205 90% 38%;   /* #0B76BD – deep sky blue */
   --secondary-foreground: 0 0% 100%;
-  
-  --border: 210 20% 86%;              /* Soft slate border */
-  --muted-foreground: 215 16% 47%;    /* Muted slate text */
+
+  /* ── UI chrome ───────────────────────────────────────── */
+  --border:           214 22% 84%;   /* #CDD6E4 – soft slate border */
+  --muted-foreground: 220 14% 46%;   /* #697285 – subdued label / caption text */
 }
 
 /* Base Body Styles */
 html {
   background-color: #000000;          /* Original pure black background */
-  transition: background-color 0.3s ease;
+  transition: background-color 0.4s ease;
 }
 
-.theme-light html {
-  background-color: hsl(var(--background));
+html.theme-light {
+  background-color: hsl(214, 32%, 97%);
 }
 
 body {
@@ -298,12 +304,28 @@ body {
   border: 1px solid hsl(var(--border));
   padding: 0.75rem 1.25rem;
   border-radius: 80px;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sm\:col-span-7 .slide-up:hover {
   border-color: hsl(var(--primary));
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Light mode: stack badges get white glass cards ── */
+html.theme-light .sm\:col-span-7 .slide-up {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid hsl(214 22% 88%);
+  box-shadow: 0 2px 8px rgba(30, 50, 90, 0.07);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: hsl(220, 30%, 10%);
+}
+
+html.theme-light .sm\:col-span-7 .slide-up:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 4px 20px rgba(22, 153, 90, 0.14);
 }
 
 /* -------------------------------------------------------------
@@ -503,6 +525,13 @@ footer a:hover svg {
   padding: 1.25rem 0;
   background: rgba(255, 255, 255, 0.015);
   user-select: none;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+html.theme-light .marquee-section {
+  background: rgba(255, 255, 255, 0.6);
+  border-top-color: hsl(214 22% 86%);
+  border-bottom-color: hsl(214 22% 86%);
 }
 
 .marquee-container {
@@ -618,8 +647,8 @@ footer a:hover svg {
   text-shadow: 0 0 60px rgba(0, 240, 76, 0.25);
 }
 
-.theme-light .footer-headline-accent {
-  text-shadow: 0 0 60px rgba(0, 240, 76, 0.1);
+html.theme-light .footer-headline-accent {
+  text-shadow: 0 0 40px rgba(22, 153, 90, 0.18);
 }
 
 .footer-subtext {
@@ -861,8 +890,8 @@ footer a:hover svg {
 #space-canvas {
   transition: opacity 0.5s ease;
 }
-.theme-light #space-canvas {
-  opacity: 0.08; /* Fade canvas to keep light mode clean */
+html.theme-light #space-canvas {
+  opacity: 0.03; /* Almost invisible – keeps the vibe subtle in light mode */
 }
 
 #theme-toggle {
@@ -881,14 +910,101 @@ footer a:hover svg {
   transform: scale(1.05);
 }
 
-.theme-light #theme-toggle {
-  background: rgba(0, 0, 0, 0.03);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+html.theme-light #theme-toggle {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid hsl(214 22% 80%);
+  box-shadow: 0 4px 16px rgba(30, 50, 90, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.theme-light #theme-toggle:hover {
-  background: rgba(0, 0, 0, 0.06);
-  box-shadow: 0 0 15px rgba(0, 240, 76, 0.15);
+html.theme-light #theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 16px rgba(22, 153, 90, 0.2);
+}
+
+/* ── Light mode: nav menu drawer ── */
+html.theme-light #menu-drawer {
+  background-color: rgba(248, 250, 252, 0.96);
+  border-left-color: hsl(214 22% 86%);
+  box-shadow: -10px 0 40px rgba(30, 50, 90, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── Light mode: scroll-to-top button ── */
+html.theme-light #scroll-to-top {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: hsl(214 22% 80%);
+  box-shadow: 0 4px 16px rgba(30, 50, 90, 0.1);
+}
+
+html.theme-light #scroll-to-top:hover {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 20px rgba(22, 153, 90, 0.35);
+}
+
+/* ── Light mode: experience items ── */
+html.theme-light .experience-item {
+  border-bottom-color: hsl(214 22% 88%);
+}
+
+/* ── Light mode: project hover thumbnail shadow ── */
+html.theme-light #project-hover-container {
+  box-shadow: 0 10px 40px rgba(30, 50, 90, 0.2);
+}
+
+/* ── Light mode: footer social buttons ── */
+html.theme-light .footer-social-btn {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: hsl(214 22% 82%);
+  color: hsl(220, 20%, 28%);
+}
+
+html.theme-light .footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.98);
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 16px rgba(22, 153, 90, 0.18);
+}
+
+/* ── Light mode: footer rule gradient ── */
+html.theme-light .footer-rule {
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)/0.3), transparent);
+}
+
+/* ── Light mode: visitor badge ── */
+html.theme-light .visitor-badge-inner {
+  background: rgba(22, 153, 90, 0.06);
+  border-color: rgba(22, 153, 90, 0.2);
+  box-shadow: 0 0 18px rgba(22, 153, 90, 0.06), inset 0 0 10px rgba(22, 153, 90, 0.03);
+}
+
+html.theme-light .visitor-badge-inner:hover {
+  border-color: rgba(22, 153, 90, 0.4);
+  box-shadow: 0 0 28px rgba(22, 153, 90, 0.14);
+}
+
+/* ── Light mode: footer bottom border ── */
+html.theme-light .footer-bottom {
+  border-top-color: hsl(214 22% 88%);
+}
+
+/* ── Light mode: education timeline ── */
+html.theme-light .education-timeline {
+  border-left-color: hsl(214 22% 84%);
+}
+
+/* ── Light mode: project items border ── */
+html.theme-light .project-item {
+  border-bottom-color: hsl(214 22% 88%);
+}
+
+/* ── Light mode: html background ── */
+html.theme-light body {
+  background: transparent;
 }
 
 /* -------------------------------------------------------------
@@ -903,7 +1019,7 @@ footer a:hover svg {
 .cert-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid hsl(var(--border));
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 2.25rem 2rem;
   position: relative;
   overflow: hidden;
@@ -918,13 +1034,21 @@ footer a:hover svg {
   transform: translateY(-6px);
 }
 
-.theme-light .cert-card {
-  background: rgba(0, 0, 0, 0.015);
+/* ── Light mode: cert cards get premium white glass look ── */
+html.theme-light .cert-card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid hsl(214 22% 88%);
+  box-shadow: 0 4px 24px rgba(30, 50, 90, 0.08),
+              0 1px 4px rgba(30, 50, 90, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.theme-light .cert-card:hover {
-  background: rgba(0, 0, 0, 0.03);
-  box-shadow: 0 10px 30px rgba(0, 240, 76, 0.06);
+html.theme-light .cert-card:hover {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 12px 40px rgba(22, 153, 90, 0.14),
+              0 4px 12px rgba(30, 50, 90, 0.06);
 }
 
 /* Modal layout */
@@ -1044,11 +1168,19 @@ footer a:hover svg {
   transform: translateX(8px);
 }
 
-.theme-light .edu-card {
-  background: rgba(0, 0, 0, 0.01);
+/* ── Light mode: edu cards ── */
+html.theme-light .edu-card {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: hsl(214 22% 88%);
+  box-shadow: 0 4px 20px rgba(30, 50, 90, 0.07),
+              0 1px 4px rgba(30, 50, 90, 0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.theme-light .edu-card:hover {
-  background: rgba(0, 0, 0, 0.02);
-  box-shadow: 0 10px 25px rgba(0, 240, 76, 0.03);
+html.theme-light .edu-card:hover {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 10px 32px rgba(22, 153, 90, 0.12),
+              0 4px 8px rgba(30, 50, 90, 0.05);
 }

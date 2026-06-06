@@ -888,84 +888,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal || !modalClose || !modalBody) return;
 
     const certTemplates = {
-      'java-ocp': `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl bg-[#151515] border-4 border-[#c5a059]">
-          <!-- Background Pattern -->
-          <rect width="800" height="550" fill="#181818"/>
-          <circle cx="400" cy="275" r="240" fill="none" stroke="#222" stroke-width="40" stroke-dasharray="10 15"/>
-          <rect x="25" y="25" width="750" height="500" fill="none" stroke="#c5a059" stroke-width="2"/>
-          <rect x="35" y="35" width="730" height="480" fill="none" stroke="#c5a059" stroke-width="1" stroke-dasharray="5 5"/>
-          
-          <!-- Content -->
-          <text x="400" y="110" font-family="'Anton', sans-serif" font-size="34" fill="#c5a059" text-anchor="middle" letter-spacing="4">ORACLE CERTIFICATION</text>
-          <text x="400" y="150" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#888" text-anchor="middle" letter-spacing="2">THIS CREDENTIAL CONFIRMS THAT</text>
-          
-          <text x="400" y="220" font-family="'Anton', sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">MUGALA SAI PRANITH</text>
-          <line x1="250" y1="240" x2="550" y2="240" stroke="#c5a059" stroke-width="2"/>
-          
-          <text x="400" y="280" font-family="'Roboto Flex', sans-serif" font-size="14" fill="#888" text-anchor="middle">HAS SUCCESSFULY MET THE STANDARDS TO BE DESIGNATED AS AN</text>
-          <text x="400" y="325" font-family="'Anton', sans-serif" font-size="28" fill="#00F04C" text-anchor="middle" letter-spacing="1">ORACLE CERTIFIED PROFESSIONAL</text>
-          <text x="400" y="360" font-family="'Roboto Flex', sans-serif" font-size="20" fill="#ffffff" text-anchor="middle" font-weight="bold">Java SE 11 Developer</text>
-          
-          <!-- Seal & Signatures -->
-          <path d="M400,410 L415,440 L445,440 L420,460 L430,490 L400,470 L370,490 L380,460 L355,440 L385,440 Z" fill="#c5a059"/>
-          <circle cx="400" cy="450" r="18" fill="none" stroke="#ffffff" stroke-width="2"/>
-          
-          <text x="120" y="460" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#666">DATE: JAN 2023</text>
-          <text x="680" y="460" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#666" text-anchor="end">ID: OR-110293</text>
-        </svg>
+      'gcp-cdl': `
+        <div class="flex flex-col items-center gap-4 w-full">
+          <img
+            src="assets/1707991092404.jpg"
+            alt="Google Cloud Certified – Cloud Digital Leader"
+            class="w-full max-w-2xl rounded-xl shadow-2xl border border-white/10 object-contain"
+            style="max-height: 70vh;"
+          />
+          <p class="text-xs text-muted-foreground font-mono tracking-widest uppercase">Google Cloud Certified · Cloud Digital Leader · Feb 2024</p>
+        </div>
       `,
-      'spring-pro': `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl bg-[#0d160f] border-4 border-[#00F04C]">
-          <!-- Background Pattern -->
-          <rect width="800" height="550" fill="#0d1b11"/>
-          <circle cx="400" cy="275" r="230" fill="none" stroke="#122c19" stroke-width="60" stroke-dasharray="20 10"/>
-          <rect x="25" y="25" width="750" height="500" fill="none" stroke="#00F04C" stroke-width="2" stroke-opacity="0.5"/>
-          
-          <!-- Content -->
-          <text x="400" y="110" font-family="'Anton', sans-serif" font-size="34" fill="#00F04C" text-anchor="middle" letter-spacing="4">SPRING CERTIFICATE</text>
-          <text x="400" y="150" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#88b594" text-anchor="middle" letter-spacing="2">THIS CERTIFIES THAT THE CANDIDATE</text>
-          
-          <text x="400" y="220" font-family="'Anton', sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">MUGALA SAI PRANITH</text>
-          <line x1="220" y1="240" x2="580" y2="240" stroke="#00F04C" stroke-width="2"/>
-          
-          <text x="400" y="285" font-family="'Roboto Flex', sans-serif" font-size="14" fill="#88b594" text-anchor="middle">HAS ACHIEVED THE DESIGNATION OF</text>
-          <text x="400" y="335" font-family="'Anton', sans-serif" font-size="30" fill="#00F04C" text-anchor="middle" letter-spacing="2">SPRING CERTIFIED PROFESSIONAL</text>
-          <text x="400" y="370" font-family="'Roboto Flex', sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">Enterprise Application Architecture & Spring Core</text>
-          
-          <!-- Seal -->
-          <circle cx="400" cy="450" r="25" fill="#00F04C" fill-opacity="0.2"/>
-          <path d="M394,440 L406,440 L410,450 L400,462 L390,450 Z" fill="#00F04C"/>
-          
-          <text x="120" y="460" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#588564">DATE: JUN 2024</text>
-          <text x="680" y="460" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#588564" text-anchor="end">ID: VM-883921</text>
-        </svg>
-      `,
-      'azure-dev': `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" class="w-full h-auto max-h-[70vh] rounded-lg shadow-2xl bg-[#091522] border-4 border-[#00a2ed]">
-          <!-- Background Pattern -->
-          <rect width="800" height="550" fill="#050e18"/>
-          <path d="M0,550 L800,0 L800,550 Z" fill="#061220" opacity="0.5"/>
-          <rect x="25" y="25" width="750" height="500" fill="none" stroke="#00a2ed" stroke-width="2" stroke-opacity="0.4"/>
-          
-          <!-- Content -->
-          <text x="400" y="110" font-family="'Anton', sans-serif" font-size="34" fill="#00a2ed" text-anchor="middle" letter-spacing="4">MICROSOFT CERTIFICATE</text>
-          <text x="400" y="150" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#6992be" text-anchor="middle" letter-spacing="2">THIS CERTIFIES THAT THE ASSOCIATE</text>
-          
-          <text x="400" y="220" font-family="'Anton', sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">MUGALA SAI PRANITH</text>
-          <line x1="220" y1="240" x2="580" y2="240" stroke="#00a2ed" stroke-width="2"/>
-          
-          <text x="400" y="285" font-family="'Roboto Flex', sans-serif" font-size="14" fill="#6992be" text-anchor="middle">HAS DEMONSTRATED DEEP TECHNICAL SKILL AND IS CERTIFIED AS AN</text>
-          <text x="400" y="335" font-family="'Anton', sans-serif" font-size="30" fill="#00a2ed" text-anchor="middle" letter-spacing="1">AZURE DEVELOPER ASSOCIATE</text>
-          <text x="400" y="370" font-family="'Roboto Flex', sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">Cloud Solutions, Security & Integration</text>
-          
-          <!-- Seal -->
-          <rect x="388" y="438" width="24" height="24" rx="2" fill="none" stroke="#00a2ed" stroke-width="2"/>
-          <circle cx="400" cy="450" r="6" fill="#00a2ed"/>
-          
-          <text x="120" y="460" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#4d7297">DATE: OCT 2024</text>
-          <text x="680" y="460" font-family="'Roboto Flex', sans-serif" font-size="12" fill="#4d7297" text-anchor="end">ID: AZ-488291</text>
-        </svg>
+      'capgemini-java': `
+        <div class="flex flex-col items-center gap-4 w-full">
+          <img
+            src="assets/Sai_Pranith_Mugala_Ocean.png"
+            alt="Capgemini OCEAN – Java Core Java Practitioner"
+            class="w-full max-w-2xl rounded-xl shadow-2xl border border-white/10 object-contain"
+            style="max-height: 70vh;"
+          />
+          <p class="text-xs text-muted-foreground font-mono tracking-widest uppercase">Capgemini OCEAN · Java – Core Java · Practitioner · Dec 2023</p>
+        </div>
       `
     };
 

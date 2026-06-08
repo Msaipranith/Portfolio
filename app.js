@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch the current count, only increment (using "/up") if not on localhost
     const API_URL = isLocalhost
-      ? `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`
+      ? `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/`
       : `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
 
     const bannerEl = document.getElementById('banner-visitor-count');

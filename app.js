@@ -479,7 +479,19 @@ document.addEventListener('DOMContentLoaded', () => {
   (function initVisitorCounter() {
     const NAMESPACE = 'msaipranith';
     const KEY       = 'portfolio-visitor-count';
-    const HIT_URL   = `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
+
+    // Exclude local development (localhost, loopback IPs, file protocol) from incrementing count
+    const isLocalhost = Boolean(
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === '[::1]' ||
+      window.location.protocol === 'file:'
+    );
+
+    // Fetch the current count, only increment (using "/up") if not on localhost
+    const API_URL = isLocalhost
+      ? `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`
+      : `https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`;
 
     const bannerEl = document.getElementById('banner-visitor-count');
     const footerEl = document.getElementById('footer-visitor-count');
@@ -521,10 +533,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Every page load → always increment (no deduplication)
     async function fetchAndRender() {
       try {
-        const res  = await fetch(HIT_URL, { method: 'GET', mode: 'cors' });
+        const res  = await fetch(API_URL, { method: 'GET', mode: 'cors' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         const count = (data && typeof data.count === 'number') ? data.count : 0;

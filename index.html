@@ -12,7 +12,7 @@
 
   <!-- Early Theme Initialization to prevent Flash of Unstyled Theme -->
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
         document.documentElement.classList.add('theme-light');
@@ -127,13 +127,18 @@
   <!-- Header sticky toggle menu -->
   <div class="sticky top-0 z-[4]">
     <!-- Theme toggle switcher -->
-    <button class="size-12 absolute top-20 right-5 md:right-10 z-[2] flex items-center justify-center rounded-full text-foreground hover:text-primary transition-colors duration-300" id="theme-toggle" aria-label="Toggle Theme">
+    <button
+      class="size-12 absolute top-20 right-5 md:right-10 z-[2] flex items-center justify-center rounded-full text-foreground hover:text-primary transition-colors duration-300"
+      id="theme-toggle" aria-label="Toggle Theme">
       <!-- Moon Icon -->
-      <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+      <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="hidden">
         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
       </svg>
       <!-- Sun Icon -->
-      <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+      <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
         <circle cx="12" cy="12" r="4"></circle>
         <path d="M12 2v2"></path>
         <path d="M12 20v2"></path>
@@ -369,7 +374,8 @@
               </h1>
 
               <p class="banner-description mt-6 text-lg text-muted-foreground slide-up-and-fade leading-relaxed">
-                Hi! I'm <span class="font-medium text-foreground">Mugala Sai Pranith</span>, a highly skilled Java Backend
+                Hi! I'm <span class="font-medium text-foreground">Mugala Sai Pranith</span>, a highly skilled Java
+                Backend
                 Developer and Systems Architect with over 4+ years of expertise in engineering low-latency Spring Boot
                 microservices, high-throughput REST APIs, database optimization (PostgreSQL/AlloyDB), and scalable
                 event-driven solutions.
@@ -468,11 +474,6 @@
                   data-suffix="+">6+</h5>
                 <p class="text-muted-foreground text-sm">Completed Projects</p>
               </div>
-              <div class="slide-up-and-fade">
-                <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5 stat-number" data-target="8000"
-                  data-suffix="K+" data-divisor="1000">8K+</h5>
-                <p class="text-muted-foreground text-sm">Hours Worked</p>
-              </div>
               <!-- Visitor Counter Stat -->
               <div class="slide-up-and-fade visitor-stat-block">
                 <h5 class="text-3xl sm:text-4xl font-anton text-primary mb-1.5" id="banner-visitor-count">
@@ -500,15 +501,18 @@
 
             <div class="grid md:grid-cols-12 mt-9 gap-8">
               <div class="md:col-span-5 slide-up-and-fade">
-                <p class="text-5xl font-anton text-foreground tracking-wide uppercase leading-none mb-6">I'M PRANITH.</p>
+                <p class="text-5xl font-anton text-foreground tracking-wide uppercase leading-none mb-6">I'M PRANITH.
+                </p>
                 <div class="space-y-4 border-l border-primary/30 pl-4 mt-6">
                   <div class="flex items-center gap-3">
                     <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
-                    <span class="text-sm uppercase tracking-widest font-mono text-foreground/90">Spring Boot Architect</span>
+                    <span class="text-sm uppercase tracking-widest font-mono text-foreground/90">Spring Boot
+                      Architect</span>
                   </div>
                   <div class="flex items-center gap-3">
                     <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
-                    <span class="text-sm uppercase tracking-widest font-mono text-foreground/90">Database Optimizer</span>
+                    <span class="text-sm uppercase tracking-widest font-mono text-foreground/90">Database
+                      Optimizer</span>
                   </div>
                   <div class="flex items-center gap-3">
                     <span class="size-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,240,76,0.6)]"></span>
@@ -520,10 +524,12 @@
               <div class="md:col-span-7 slide-up-and-fade">
                 <div class="text-lg text-muted-foreground max-w-2xl space-y-6">
                   <p class="slide-up-and-fade leading-relaxed">
-                    I am a <strong class="text-foreground font-semibold">highly skilled Java Backend Engineer &amp; Systems
+                    I am a <strong class="text-foreground font-semibold">highly skilled Java Backend Engineer &amp;
+                      Systems
                       Architect</strong> dedicated to engineering low-latency, high-concurrency systems that power
                     modern enterprise networks. With deep technical competence in designing distributed <strong
-                      class="text-foreground font-medium">Spring Boot microservices</strong>, robust RESTful API platforms,
+                      class="text-foreground font-medium">Spring Boot microservices</strong>, robust RESTful API
+                    platforms,
                     and reactive, event-driven architectures, I specialize in transforming intricate business
                     requirements into secure, decoupled, and exceptionally resilient server environments.
                   </p>
@@ -532,7 +538,8 @@
                       class="text-foreground font-medium">PostgreSQL, AlloyDB, MySQL</strong>), robust containerized
                     orchestrations, and seamless continuous integration pipelines. By coupling clean architecture
                     guidelines and SOLID design principles with rigorous test-driven development (<strong
-                      class="text-foreground font-medium">JUnit, Mockito</strong>) to ensure zero-regression stability, I
+                      class="text-foreground font-medium">JUnit, Mockito</strong>) to ensure zero-regression stability,
+                    I
                     deploy enterprise-grade backends engineered to scale effortlessly under extreme traffic loads.
                   </p>
                 </div>
@@ -599,7 +606,9 @@
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="max-h-10 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="max-h-10 text-primary">
                         <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                         <path d="M2 17l10 5 10-5"></path>
                         <path d="M2 12l10 5 10-5"></path>
@@ -609,7 +618,9 @@
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="max-h-10 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="max-h-10 text-primary">
                         <rect x="3" y="3" width="7" height="7" rx="1"></rect>
                         <rect x="14" y="3" width="7" height="7" rx="1"></rect>
                         <rect x="14" y="14" width="7" height="7" rx="1"></rect>
@@ -624,7 +635,9 @@
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="max-h-10 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="max-h-10 text-primary">
                         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                       </svg>
@@ -656,12 +669,15 @@
                 <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="PostgreSQL" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" />
+                    </div>
                     <span class="text-2xl capitalize text-foreground">PostgreSQL</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="MySQL" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">MySQL Server</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
@@ -682,37 +698,44 @@
                 <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="IntelliJ IDEA" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">IntelliJ IDEA</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="STS" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Spring Tool Suite (STS)</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Eclipse" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Eclipse</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="VS Code" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">VS Code</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="GitHub Desktop" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">GitHub Desktop</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Postman" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Postman</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Swagger" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Swagger/OpenAPI</span>
                   </div>
                 </div>
@@ -721,17 +744,21 @@
               <!-- Stack Category: Testing Frameworks -->
               <div class="grid sm:grid-cols-12 gap-6 items-start slide-reveal">
                 <div class="sm:col-span-5">
-                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">Testing Frameworks</p>
+                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">Testing
+                    Frameworks</p>
                 </div>
                 <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="JUnit" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">JUnit</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="max-h-10 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="max-h-10 text-primary">
                         <path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h1"></path>
                         <rect x="6" y="2" width="16" height="12" rx="2"></rect>
                       </svg>
@@ -740,7 +767,9 @@
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="max-h-10 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="max-h-10 text-primary">
                         <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
                         <path d="m9 12 2 2 4-4"></path>
                       </svg>
@@ -758,7 +787,8 @@
                 <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Maven" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Maven</span>
                   </div>
                 </div>
@@ -767,27 +797,33 @@
               <!-- Stack Category: Version Control & SCM -->
               <div class="grid sm:grid-cols-12 gap-6 items-start slide-reveal">
                 <div class="sm:col-span-5">
-                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">Version Control & SCM</p>
+                  <p class="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">Version Control &
+                    SCM</p>
                 </div>
                 <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Git" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Git</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="GitHub" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">GitHub</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Bitbucket" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bitbucket/bitbucket-original.svg" />
+                    </div>
                     <span class="text-2xl capitalize text-foreground">Bitbucket</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Azure Repos" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">Azure Repos</span>
                   </div>
                 </div>
@@ -801,505 +837,646 @@
                 <div class="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="HTML5" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">HTML5</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="CSS3" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">CSS3</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="Bootstrap" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
+                    </div>
                     <span class="text-2xl capitalize text-foreground">Bootstrap</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="JavaScript" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+                    </div>
                     <span class="text-2xl capitalize text-foreground">JavaScript</span>
                   </div>
                   <div class="slide-up flex gap-3.5 items-center leading-none">
                     <div class="min-w-9"><img alt="React" loading="lazy" width="40" height="40"
-                        class="max-h-10 object-contain" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" /></div>
+                        class="max-h-10 object-contain"
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" /></div>
                     <span class="text-2xl capitalize text-foreground">React</span>
                   </div>
                 </div>
               </div>
-         <!-- Section: My Experience -->
-        <section class="py-section section" id="my-experience">
-          <div class="container">
-            <div class="flex items-center gap-4 mb-10 slide-reveal">
-              <!-- Flower SVG icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
-                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
-                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
-                <defs>
-                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
-                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
-                  </pattern>
-                  <image id="section-flower_svg__b" width="400" height="453"
-                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
-                  </image>
-                </defs>
-              </svg>
-              <h2 class="text-xl uppercase leading-none text-foreground">My Experience</h2>
-            </div>
-
-            <div class="grid gap-14 slide-reveal">
-              <!-- Role 1 -->
-              <div class="experience-item">
-                <p class="text-xl text-muted-foreground">Tiger Analytics</p>
-                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer</p>
-                <p class="text-lg text-muted-foreground">Aug 2025 - Present (PepsiCo Platforms)</p>
-              </div>
-              <div class="experience-item">
-                <p class="text-xl text-muted-foreground">Tiger Analytics</p>
-                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer</p>
-                <p class="text-lg text-muted-foreground">Feb 2025 - Aug 2025 (WFM -Zebra)</p>
-              </div>
-              <!-- Role 2 -->
-              <div class="experience-item">
-                <p class="text-xl text-muted-foreground">Capgemini</p>
-                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer</p>
-                <p class="text-lg text-muted-foreground">June 2023 - Jan 2025 (Optimus - TCL)</p>
-              </div>
-              <!-- Role 3 -->
-              <div class="experience-item">
-                <p class="text-xl text-muted-foreground">Capgemini</p>
-                <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer</p>
-                <p class="text-lg text-muted-foreground">Mar 2022 - May 2023 (Ruckkus-Hiring Module)</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section: Certifications -->
-        <section class="pb-section section" id="certifications">
-          <div class="container">
-            <div class="flex items-center gap-4 mb-10 slide-reveal">
-              <!-- Flower SVG icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
-                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
-                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
-                <defs>
-                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
-                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
-                  </pattern>
-                  <image id="section-flower_svg__b" width="400" height="453"
-                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
-                  </image>
-                </defs>
-              </svg>
-              <h2 class="text-xl uppercase leading-none text-foreground">Certifications</h2>
-            </div>
-
-            <div class="cert-grid slide-reveal">
-              <!-- Cert 1: Google Cloud Digital Leader -->
-              <div class="cert-card group" data-cert="gcp-cdl">
-                <p class="text-sm text-primary uppercase font-mono tracking-widest mb-3">Google Cloud</p>
-                <h3 class="text-2xl font-anton text-foreground mb-4 uppercase leading-tight">Cloud Digital Leader</h3>
-                <div class="flex justify-between items-end mt-8 border-t border-border/50 pt-4">
-                  <div>
-                    <p class="text-xs text-muted-foreground uppercase tracking-wider">Credential ID</p>
-                    <p class="text-sm font-mono text-foreground mt-0.5">f2fb68cd…094b90f</p>
+              <!-- Section: My Experience -->
+              <section class="py-section section" id="my-experience">
+                <div class="container">
+                  <div class="flex items-center gap-4 mb-10 slide-reveal">
+                    <!-- Flower SVG icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                      viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                      <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                      <defs>
+                        <pattern id="section-flower_svg__a" width="1" height="1"
+                          patternContentUnits="objectBoundingBox">
+                          <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                        </pattern>
+                        <image id="section-flower_svg__b" width="400" height="453"
+                          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                        </image>
+                      </defs>
+                    </svg>
+                    <h2 class="text-xl uppercase leading-none text-foreground">My Experience</h2>
                   </div>
-                  <span class="text-xs text-muted-foreground uppercase">Feb 2024</span>
-                </div>
-              </div>
 
-              <!-- Cert 2: Capgemini OCEAN Core Java -->
-              <div class="cert-card group" data-cert="capgemini-java">
-                <p class="text-sm text-primary uppercase font-mono tracking-widest mb-3">Capgemini</p>
-                <h3 class="text-2xl font-anton text-foreground mb-4 uppercase leading-tight">Java – Core Java</h3>
-                <div class="flex justify-between items-end mt-8 border-t border-border/50 pt-4">
-                  <div>
-                    <p class="text-xs text-muted-foreground uppercase tracking-wider">Program</p>
-                    <p class="text-sm font-mono text-foreground mt-0.5">OCEAN · Practitioner</p>
-                  </div>
-                  <span class="text-xs text-muted-foreground uppercase">Dec 2023</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Certifications Viewer Modal -->
-        <div id="cert-modal" class="modal-overlay" aria-hidden="true">
-          <button class="modal-close-btn" id="modal-close" aria-label="Close modal">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-          <div class="modal-content-wrap">
-            <div id="modal-body" class="flex flex-col items-center justify-center min-h-[350px]">
-              <!-- Dynamic certificate layout is loaded here by JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Section: Education -->
-        <section class="pb-section section" id="education">
-          <div class="container">
-            <div class="flex items-center gap-4 mb-10 slide-reveal">
-              <!-- Flower SVG icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
-                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
-                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
-                <defs>
-                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
-                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
-                  </pattern>
-                  <image id="section-flower_svg__b" width="400" height="453"
-                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc566c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
-                  </image>
-                </defs>
-              </svg>
-              <h2 class="text-xl uppercase leading-none text-foreground">Education</h2>
-            </div>
-
-            <div class="education-timeline slide-reveal">
-              <!-- BTech -->
-              <div class="education-item">
-                <span class="education-dot"></span>
-                <div class="edu-card">
-                  <div class="flex justify-between items-start max-md:flex-col gap-2 mb-3">
-                    <div>
-                      <h3 class="text-3xl font-anton text-foreground uppercase leading-tight">Bachelor of Technology</h3>
-                      <p class="text-lg text-primary font-medium mt-1">EEE – Electrical and Electronics Engineering</p>
+                  <div class="grid gap-14 slide-reveal">
+                    <!-- Role 1 -->
+                    <div class="experience-item">
+                      <p class="text-xl text-muted-foreground">Tiger Analytics</p>
+                      <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer
+                      </p>
+                      <p class="text-lg text-muted-foreground">Aug 2025 - Present (PepsiCo Platforms)</p>
                     </div>
-                    <span class="text-sm font-mono text-muted-foreground">BTech</span>
-                  </div>
-                  <p class="text-base text-muted-foreground leading-relaxed mb-4">
-                    Sree Chaitanya Institute Of Technological Sciences
-                  </p>
-                  <div class="flex flex-wrap gap-4 items-center border-t border-border/40 pt-4">
-                    <span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs rounded-full uppercase tracking-wider font-mono">CGPA: 8.2 / 10.0</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Intermediate -->
-              <div class="education-item">
-                <span class="education-dot"></span>
-                <div class="edu-card">
-                  <div class="flex justify-between items-start max-md:flex-col gap-2 mb-3">
-                    <div>
-                      <h3 class="text-3xl font-anton text-foreground uppercase leading-tight">Intermediate</h3>
-                      <p class="text-lg text-primary font-medium mt-1">MPC – Maths, Physics & Chemistry</p>
+                    <div class="experience-item">
+                      <p class="text-xl text-muted-foreground">Tiger Analytics</p>
+                      <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer
+                      </p>
+                      <p class="text-lg text-muted-foreground">Feb 2025 - Aug 2025 (WFM -Zebra)</p>
                     </div>
-                    <span class="text-sm font-mono text-muted-foreground">Intermediate</span>
-                  </div>
-                  <p class="text-base text-muted-foreground leading-relaxed mb-4">
-                    Sree Chaitanya Junior College
-                  </p>
-                  <div class="flex flex-wrap gap-4 items-center border-t border-border/40 pt-4">
-                    <span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs rounded-full uppercase tracking-wider font-mono">CGPA: 9.0 / 10.0</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SSC -->
-              <div class="education-item">
-                <span class="education-dot"></span>
-                <div class="edu-card">
-                  <div class="flex justify-between items-start max-md:flex-col gap-2 mb-3">
-                    <div>
-                      <h3 class="text-3xl font-anton text-foreground uppercase leading-tight">SSC</h3>
-                      <p class="text-lg text-primary font-medium mt-1">Secondary School Certificate</p>
+                    <!-- Role 2 -->
+                    <div class="experience-item">
+                      <p class="text-xl text-muted-foreground">Capgemini</p>
+                      <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer
+                      </p>
+                      <p class="text-lg text-muted-foreground">June 2023 - Jan 2025 (Optimus - TCL)</p>
                     </div>
-                    <span class="text-sm font-mono text-muted-foreground">SSC</span>
-                  </div>
-                  <p class="text-base text-muted-foreground leading-relaxed mb-4">
-                    Sree Chaitanya High School
-                  </p>
-                  <div class="flex flex-wrap gap-4 items-center border-t border-border/40 pt-4">
-                    <span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs rounded-full uppercase tracking-wider font-mono">CGPA: 8.2 / 10.0</span>
+                    <!-- Role 3 -->
+                    <div class="experience-item">
+                      <p class="text-xl text-muted-foreground">Capgemini</p>
+                      <p class="text-5xl font-anton leading-none mt-3.5 mb-2.5 text-foreground">Java Backend Developer
+                      </p>
+                      <p class="text-lg text-muted-foreground">Mar 2022 - May 2023 (Ruckkus-Hiring Module)</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
+              </section>
 
-        <!-- Section: Selected Projects -->
-        <section class="pb-section section" id="selected-projects">
-          <div class="container">
-            <div class="flex items-center gap-4 mb-10 slide-reveal">
-              <!-- Flower SVG icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
-                viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
-                <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
-                <defs>
-                  <pattern id="section-flower_svg__a" width="1" height="1" patternContentUnits="objectBoundingBox">
-                    <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
-                  </pattern>
-                  <image id="section-flower_svg__b" width="400" height="453"
-                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4AjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
-                  </image>
-                </defs>
-              </svg>
-              <h2 class="text-xl uppercase leading-none text-foreground">Engineering Projects Showcase</h2>
-            </div>
+              <!-- Section: Certifications -->
+              <section class="pb-section section" id="certifications">
+                <div class="container">
+                  <div class="flex items-center gap-4 mb-10 slide-reveal">
+                    <!-- Flower SVG icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                      viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                      <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                      <defs>
+                        <pattern id="section-flower_svg__a" width="1" height="1"
+                          patternContentUnits="objectBoundingBox">
+                          <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                        </pattern>
+                        <image id="section-flower_svg__b" width="400" height="453"
+                          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                        </image>
+                      </defs>
+                    </svg>
+                    <h2 class="text-xl uppercase leading-none text-foreground">Certifications</h2>
+                  </div>
 
-            <!-- Project Follow Cursor Hover Container -->
-            <div class="group/projects relative slide-reveal">
-
-              <!-- Floating Thumbnail Follow cursor element (fixed so it stays in viewport) -->
-              <div
-                class="max-md:hidden fixed z-[999] pointer-events-none overflow-hidden opacity-0 rounded-lg shadow-2xl"
-                style="width: 320px; height: 220px;" id="project-hover-container">
-                <img alt="WFM Migration" loading="lazy" width="400" height="500"
-                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
-                  src="assets/WFM.png" />
-                <img alt="GRIR Platform" loading="lazy" width="400" height="500"
-                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
-                  src="assets/GRIR.jpg" />
-                <img alt="Optimus ERP" loading="lazy" width="400" height="500"
-                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
-                  src="assets/tcl-optimus.webp" />
-                <img alt="Ruckkus Hiring" loading="lazy" width="400" height="500"
-                  class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
-                  src="assets/Ruckkus-hiring.png" />
-              </div>
-
-              <div class="flex flex-col max-md:gap-10">
-                <!-- Project item 1 -->
-                <div
-                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
-                  data-index="0">
-                  <div class="flex gap-2 md:gap-5">
-                    <div class="font-anton text-muted-foreground text-xl">_ 01 .</div>
-                    <div>
-                      <h4
-                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
-                        WFM Migration
-                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <path id="arrow-line" d="M10 14 21 3"></path>
-                            <path id="arrow-curb" d="M15 3h6v6"></path>
-                          </svg>
-                        </span>
-                      </h4>
-                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
-                        <div class="gap-3 flex items-center">
-                          <span>AlloyDB &amp; DB2</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                  <div class="cert-grid slide-reveal">
+                    <!-- Cert 1: Google Cloud Digital Leader -->
+                    <div class="cert-card group" data-cert="gcp-cdl">
+                      <p class="text-sm text-primary uppercase font-mono tracking-widest mb-3">Google Cloud</p>
+                      <h3 class="text-2xl font-anton text-foreground mb-4 uppercase leading-tight">Cloud Digital Leader
+                      </h3>
+                      <div class="flex justify-between items-end mt-8 border-t border-border/50 pt-4">
+                        <div>
+                          <p class="text-xs text-muted-foreground uppercase tracking-wider">Credential ID</p>
+                          <p class="text-sm font-mono text-foreground mt-0.5">f2fb68cd…094b90f</p>
                         </div>
-                        <div class="gap-3 flex items-center">
-                          <span>MyBatis &amp; JDBC</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                        <span class="text-xs text-muted-foreground uppercase">Feb 2024</span>
+                      </div>
+                    </div>
+
+                    <!-- Cert 2: Capgemini OCEAN Core Java -->
+                    <div class="cert-card group" data-cert="capgemini-java">
+                      <p class="text-sm text-primary uppercase font-mono tracking-widest mb-3">Capgemini</p>
+                      <h3 class="text-2xl font-anton text-foreground mb-4 uppercase leading-tight">Java – Core Java</h3>
+                      <div class="flex justify-between items-end mt-8 border-t border-border/50 pt-4">
+                        <div>
+                          <p class="text-xs text-muted-foreground uppercase tracking-wider">Program</p>
+                          <p class="text-sm font-mono text-foreground mt-0.5">OCEAN · Practitioner</p>
                         </div>
-                        <div class="gap-3 flex items-center">
-                          <span>Java 8</span>
-                        </div>
+                        <span class="text-xs text-muted-foreground uppercase">Dec 2023</span>
                       </div>
                     </div>
                   </div>
                 </div>
+              </section>
 
-                <!-- Project item 2 -->
-                <div
-                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
-                  data-index="1">
-                  <div class="flex gap-2 md:gap-5">
-                    <div class="font-anton text-muted-foreground text-xl">_ 02 .</div>
-                    <div>
-                      <h4
-                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
-                        GRIR Platform
-                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <path id="arrow-line" d="M10 14 21 3"></path>
-                            <path id="arrow-curb" d="M15 3h6v6"></path>
-                          </svg>
-                        </span>
-                      </h4>
-                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
-                        <div class="gap-3 flex items-center">
-                          <span>Spring Boot</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
-                        </div>
-                        <div class="gap-3 flex items-center">
-                          <span>Azure Service Bus</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
-                        </div>
-                        <div class="gap-3 flex items-center">
-                          <span>REST APIs &amp; Celonis</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Project item 3 -->
-                <div
-                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
-                  data-index="2">
-                  <div class="flex gap-2 md:gap-5">
-                    <div class="font-anton text-muted-foreground text-xl">_ 03 .</div>
-                    <div>
-                      <h4
-                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
-                        Optimus ERP
-                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <path id="arrow-line" d="M10 14 21 3"></path>
-                            <path id="arrow-curb" d="M15 3h6v6"></path>
-                          </svg>
-                        </span>
-                      </h4>
-                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
-                        <div class="gap-3 flex items-center">
-                          <span>RESTful APIs</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
-                        </div>
-                        <div class="gap-3 flex items-center">
-                          <span>PostgreSQL &amp; MySQL</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
-                        </div>
-                        <div class="gap-3 flex items-center">
-                          <span>Spring Boot</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Project item 4 -->
-                <div
-                  class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
-                  data-index="3">
-                  <div class="flex gap-2 md:gap-5">
-                    <div class="font-anton text-muted-foreground text-xl">_ 04 .</div>
-                    <div>
-                      <h4
-                        class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
-                        Ruckkus Hiring
-                        <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <path id="arrow-line" d="M10 14 21 3"></path>
-                            <path id="arrow-curb" d="M15 3h6v6"></path>
-                          </svg>
-                        </span>
-                      </h4>
-                      <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
-                        <div class="gap-3 flex items-center">
-                          <span>Spring Boot</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
-                        </div>
-                        <div class="gap-3 flex items-center">
-                          <span>Spring Security</span>
-                          <span class="inline-block size-2 rounded-full bg-background-light"></span>
-                        </div>
-                        <div class="gap-3 flex items-center">
-                          <span>JUnit &amp; Swagger</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </section>
-
-        <!-- Section: Footer Redesign / CTA -->
-        <footer id="contact" class="footer-cta">
-          <div class="container">
-
-            <!-- Top border rule -->
-            <div class="footer-rule"></div>
-
-            <!-- Main CTA Headline -->
-            <div class="footer-headline-wrap slide-reveal">
-              <p class="footer-eyebrow">What's Next?</p>
-              <h2 class="footer-headline font-anton">LET'S BUILD SOMETHING<br /><span
-                  class="footer-headline-accent">GREAT</span></h2>
-              <p class="footer-subtext">
-                Open to discussing backend engineering opportunities,<br class="hidden sm:block" />
-                scalable systems, and impactful products.
-              </p>
-            </div>
-
-            <!-- CTA Links -->
-            <div class="footer-cta-links slide-reveal">
-              <a href="mailto:saipranithsunny@gmail.com" class="footer-email-link">
-                saipranithsunny@gmail.com
-              </a>
-            </div>
-
-            <!-- Social Icon Row -->
-            <div class="footer-socials slide-reveal">
-              <a href="https://github.com/Msaipranith" target="_blank" rel="noopener noreferrer"
-                class="footer-social-btn" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                </svg>
-              </a>
-              <a href="https://www.linkedin.com/in/pranith0418/" target="_blank" rel="noopener noreferrer"
-                class="footer-social-btn" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-              </a>
-              <a href="https://www.freelancer.in/u/saipranith6945" target="_blank" rel="noopener noreferrer"
-                class="footer-social-btn" aria-label="Freelancer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
-              </a>
-            </div>
-
-            <!-- Bottom bar: availability + visitor counter + copyright -->
-            <div class="footer-bottom">
-              <div class="footer-availability">
-                <span class="otw-badge" aria-hidden="true">
-                  <span class="otw-ring otw-ring-1"></span>
-                  <span class="otw-ring otw-ring-2"></span>
-                  <span class="otw-core"></span>
-                </span>
-                <span>Available for opportunities</span>
-              </div>
-
-              <!-- Visitor Counter Footer Badge -->
-              <div class="visitor-footer-badge" id="visitor-footer-badge">
-                <div class="visitor-badge-inner">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="visitor-badge-icon">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
+              <!-- Certifications Viewer Modal -->
+              <div id="cert-modal" class="modal-overlay" aria-hidden="true">
+                <button class="modal-close-btn" id="modal-close" aria-label="Close modal">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
-                  <span class="visitor-badge-label">Visitors</span>
-                  <span class="visitor-badge-divider"></span>
-                  <span class="visitor-badge-count" id="footer-visitor-count">—</span>
-                  <span class="visitor-badge-live"></span>
+                </button>
+                <div class="modal-content-wrap">
+                  <div id="modal-body" class="flex flex-col items-center justify-center min-h-[350px]">
+                    <!-- Dynamic certificate layout is loaded here by JS -->
+                  </div>
                 </div>
               </div>
 
-              <p class="footer-copy">
-                &copy; <span id="footer-year"></span> Mugala Sai Pranith
-              </p>
+              <!-- Section: Education -->
+              <section class="pb-section section" id="education">
+                <div class="container">
+                  <div class="flex items-center gap-4 mb-10 slide-reveal">
+                    <!-- Flower SVG icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                      viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                      <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                      <defs>
+                        <pattern id="section-flower_svg__a" width="1" height="1"
+                          patternContentUnits="objectBoundingBox">
+                          <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                        </pattern>
+                        <image id="section-flower_svg__b" width="400" height="453"
+                          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4DjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc566c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                        </image>
+                      </defs>
+                    </svg>
+                    <h2 class="text-xl uppercase leading-none text-foreground">Education</h2>
+                  </div>
+
+                  <div class="education-timeline slide-reveal">
+                    <!-- BTech -->
+                    <div class="education-item">
+                      <span class="education-dot"></span>
+                      <div class="edu-card">
+                        <div class="flex justify-between items-start max-md:flex-col gap-2 mb-3">
+                          <div>
+                            <h3 class="text-3xl font-anton text-foreground uppercase leading-tight">Bachelor of
+                              Technology</h3>
+                            <p class="text-lg text-primary font-medium mt-1">EEE – Electrical and Electronics
+                              Engineering</p>
+                          </div>
+                          <span class="text-sm font-mono text-muted-foreground">BTech</span>
+                        </div>
+                        <p class="text-base text-muted-foreground leading-relaxed mb-4">
+                          Sree Chaitanya Institute Of Technological Sciences
+                        </p>
+                        <div class="flex flex-wrap gap-4 items-center border-t border-border/40 pt-4">
+                          <span
+                            class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs rounded-full uppercase tracking-wider font-mono">CGPA:
+                            8.2 / 10.0</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Intermediate -->
+                    <div class="education-item">
+                      <span class="education-dot"></span>
+                      <div class="edu-card">
+                        <div class="flex justify-between items-start max-md:flex-col gap-2 mb-3">
+                          <div>
+                            <h3 class="text-3xl font-anton text-foreground uppercase leading-tight">Intermediate</h3>
+                            <p class="text-lg text-primary font-medium mt-1">MPC – Maths, Physics & Chemistry</p>
+                          </div>
+                          <span class="text-sm font-mono text-muted-foreground">Intermediate</span>
+                        </div>
+                        <p class="text-base text-muted-foreground leading-relaxed mb-4">
+                          Sree Chaitanya Junior College
+                        </p>
+                        <div class="flex flex-wrap gap-4 items-center border-t border-border/40 pt-4">
+                          <span
+                            class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs rounded-full uppercase tracking-wider font-mono">CGPA:
+                            9.0 / 10.0</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- SSC -->
+                    <div class="education-item">
+                      <span class="education-dot"></span>
+                      <div class="edu-card">
+                        <div class="flex justify-between items-start max-md:flex-col gap-2 mb-3">
+                          <div>
+                            <h3 class="text-3xl font-anton text-foreground uppercase leading-tight">SSC</h3>
+                            <p class="text-lg text-primary font-medium mt-1">Secondary School Certificate</p>
+                          </div>
+                          <span class="text-sm font-mono text-muted-foreground">SSC</span>
+                        </div>
+                        <p class="text-base text-muted-foreground leading-relaxed mb-4">
+                          Sree Chaitanya High School
+                        </p>
+                        <div class="flex flex-wrap gap-4 items-center border-t border-border/40 pt-4">
+                          <span
+                            class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs rounded-full uppercase tracking-wider font-mono">CGPA:
+                            8.2 / 10.0</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Section: Professional Projects -->
+              <section class="pb-section section" id="Professional-projects">
+                <div class="container">
+                  <div class="flex items-center gap-4 mb-10 slide-reveal">
+                    <!-- Flower SVG icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none"
+                      viewBox="0 0 25 29" width="25" class="animate-spin duration-7000">
+                      <path fill="url(#section-flower_svg__a)" d="M25 0H0v28.929h25z"></path>
+                      <defs>
+                        <pattern id="section-flower_svg__a" width="1" height="1"
+                          patternContentUnits="objectBoundingBox">
+                          <use xlink:href="#section-flower_svg__b" transform="matrix(.00255 0 0 .0022 -.01 0)"></use>
+                        </pattern>
+                        <image id="section-flower_svg__b" width="400" height="453"
+                          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAHFCAYAAADc/K+IAAAAAXNSR0IArs4c6QAAIABJREFUeF7sfQmcHFXxf1XPzIZAgE0QvABBUOTwgoAQ8Fh2+vVkQwznoiggiIqieKECikQ88EJ/iDeKJwoLgpC4mfd6wijHBjCAKCoif1BURIVkE0Li7sx0/T8PJhiSPbpn+njdXe/zyYeP7ntV3/rWm67ud1QhcGMGOmEAAYA6GchjUs0A+z3V7gsbvJ4O3JgBZoAZYAaYgcAMcAAJTBkPYAaYAWaAGdAMcADhecAMMAPMADPQEQMcQDqijQdljQFe2s+aR9meOBjgABIHy6yDGWAGmIEMMsABJINOZZOYAWaAGYiDAQ4gcbDMOpgBZoAZyCADHEAy6FQ2Kd0M8H5Muv2XNPo45w8HkKS9zfqZAWaAGUgpAxxAUuo4hs0MMAPMwJMMxPnJsRnlHEB4AjIDzEAHDCT41OoALQ+JhgEOINHwylKZAWaAGYiWAQNieOIBxAAOonUyS2cGmAFmIKMMJB5AzOSVw5qZfkknKp5N6fQbo56eAQ4g03PEPXLMgJRyGwCYUygUSpvQUETEJ5rN5qjjOE/kmB42PTMMdPaawwEkMxOADemUgWq1+lzLsg4EgP0AYE9E3JOI9tSBAwBmTCO3AQD/BIC/AMCDRHQ/It5pWdYd5XL5X51i4nHMQBoYSFEA6SxCpsEJjDFeBur1+nPGx8cHENEBgEMAYJeIEPwNAJYTUZWI3EqlsioiPSw2Bgb4CbQlySkKIDHMEFaRWQZqtdqzPc97MwC8EQD2T6CUQQsAbgCAH46NjV2zcOHC9Zklmw3LDQMcQHLj6nwaqpQSAPBuAJgPAEUTWEDEx4noMiK6yHEc/ZXCjRlIJQMcQFLpNgY9FQNEhEqpRYh4LgDovQ1Tm94/+XGhUDivv7//H6aCZFzMwGQMcADhuZFyBp65Mu267q4A8H0i6kuRYeuJ6AutVuvCgYGBsRThzg5U3uDoyJccQDqijQeZyICUciEi/ggAtjcRnw9Md3meN1ipVO730Ze7MAOJM8ABJHEXMIAwGHBd9xgi+ikAbHpfIwzRcctYg4in2rZ9TdyKWR8zEJQBDiBBGeP+xjEgpTwWEXXwiHiTPLZ1Do+I3uk4zreNI5sBMQObMMABhKdDqhlQSs0FgJsAYKtUG7IleELEM23b/mrG7GJzMsRA7gNIbO+UGZo0ppjSvtuxEgB2NgVTyDg8ADhKCHF9yHJZHDMQCgO5DyChsMhCYmdgaGio0Nvb+0sAOCx25fEqXGtZ1iHlcvkP8aplbczA9AxwAJmeI+5hIANSynMQ8TMGQosC0oOlUumgvr6+R6MQzjKZgU4ZCDWAxL4cFLvCTmnmcWEyIKXcDxH10tV0iQ7DVJu0rGuFEEcnDYL1MwObMhBqAGFqmYGoGajX68Vms3kbEel8Vnlrg0KIq/JmNNtrLgMcQJKtSW/uzDAUmZTyTES82FB4UcN6tFQq7c1LWVHTnJz8tC2qcABJbq6w5oAM1Ov1ZzUajT+163QEHJ2Z7t8XQpySGWvYkFQzwAEk1e7LF3il1DcB4B35snoLa4mIDnQc546c88DmG8AAB5CJnJC270gDJlLUEKrV6r6WZd0NAIWodaVAPm+op8BJmYeIABxAMu/lbBjouu4VRHR8fNYY/RZBnue9slKp6IAaXTOagujMZsn+GeAA4p8r7pkQA67r7k1E9wCAlRAE49QS0c8cxznWOGAMKFcMcADJlbvTaaxS6iftUrTpNCAa1DrhakaV/gD">
+                        </image>
+                      </defs>
+                    </svg>
+                    <h2 class="text-xl uppercase leading-none text-foreground">Projects Showcase</h2>
+                  </div>
+
+                  <!-- Project Follow Cursor Hover Container -->
+                  <div class="group/projects relative slide-reveal">
+
+                    <!-- Floating Thumbnail Follow cursor element (fixed so it stays in viewport) -->
+                    <div
+                      class="max-md:hidden fixed z-[999] pointer-events-none overflow-hidden opacity-0 rounded-lg shadow-2xl"
+                      style="width: 320px; height: 220px;" id="project-hover-container">
+                      <img alt="WFM Migration" loading="lazy" width="400" height="500"
+                        class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                        src="assets/WFM.png" />
+                      <img alt="GRIR Platform" loading="lazy" width="400" height="500"
+                        class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                        src="assets/GRIR.jpg" />
+                      <img alt="Optimus ERP" loading="lazy" width="400" height="500"
+                        class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                        src="assets/tcl-optimus.webp" />
+                      <img alt="Ruckkus Hiring" loading="lazy" width="400" height="500"
+                        class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                        src="assets/Ruckkus-hiring.png" />
+                      <!-- Personal project preview thumbnails -->
+                      <img alt="Reservation Management System" loading="lazy" width="400" height="500"
+                        class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                        src="assets/banner.jpg" />
+                      <img alt="Task Management" loading="lazy" width="400" height="500"
+                        class="absolute inset-0 transition-all duration-500 w-full h-full object-cover project-img opacity-0"
+                        src="assets/Task_management-3-1.webp" />
+                    </div>
+
+                    <div class="flex flex-col max-md:gap-10">
+                      <!-- Project item 1 -->
+                      <div
+                        class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                        data-index="0">
+                        <div class="flex gap-2 md:gap-5">
+                          <div class="font-anton text-muted-foreground text-xl">_ 01 .</div>
+                          <div>
+                            <h4
+                              class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                              WFM Migration
+                              <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                                  <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <path id="arrow-line" d="M10 14 21 3"></path>
+                                  <path id="arrow-curb" d="M15 3h6v6"></path>
+                                </svg>
+                              </span>
+                            </h4>
+                            <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                              <div class="gap-3 flex items-center">
+                                <span>AlloyDB &amp; DB2</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>MyBatis &amp; JDBC</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>Java 8</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Project item 2 -->
+                      <div
+                        class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                        data-index="1">
+                        <div class="flex gap-2 md:gap-5">
+                          <div class="font-anton text-muted-foreground text-xl">_ 02 .</div>
+                          <div>
+                            <h4
+                              class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                              GRIR Platform
+                              <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                                  <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <path id="arrow-line" d="M10 14 21 3"></path>
+                                  <path id="arrow-curb" d="M15 3h6v6"></path>
+                                </svg>
+                              </span>
+                            </h4>
+                            <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                              <div class="gap-3 flex items-center">
+                                <span>Spring Boot</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>Azure Service Bus</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>REST APIs &amp; Celonis</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Project item 3 -->
+                      <div
+                        class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                        data-index="2">
+                        <div class="flex gap-2 md:gap-5">
+                          <div class="font-anton text-muted-foreground text-xl">_ 03 .</div>
+                          <div>
+                            <h4
+                              class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                              Optimus ERP
+                              <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                                  <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <path id="arrow-line" d="M10 14 21 3"></path>
+                                  <path id="arrow-curb" d="M15 3h6v6"></path>
+                                </svg>
+                              </span>
+                            </h4>
+                            <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                              <div class="gap-3 flex items-center">
+                                <span>RESTful APIs</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>PostgreSQL &amp; MySQL</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>Spring Boot</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Project item 4 -->
+                      <div
+                        class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-default"
+                        data-index="3">
+                        <div class="flex gap-2 md:gap-5">
+                          <div class="font-anton text-muted-foreground text-xl">_ 04 .</div>
+                          <div>
+                            <h4
+                              class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                              Ruckkus Hiring
+                              <span class="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                                  <path id="box" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <path id="arrow-line" d="M10 14 21 3"></path>
+                                  <path id="arrow-curb" d="M15 3h6v6"></path>
+                                </svg>
+                              </span>
+                            </h4>
+                            <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                              <div class="gap-3 flex items-center">
+                                <span>Spring Boot</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>Spring Security</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>JUnit &amp; Swagger</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- ── PERSONAL PROJECTS ── -->
+                      <div class="pt-8 pb-2">
+                        <p class="text-xs uppercase tracking-widest text-primary font-medium">Personal Projects</p>
+                      </div>
+
+                      <!-- Project item 5 — Reservation Management System -->
+                      <div
+                        class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                        data-index="4">
+                        <div class="flex gap-2 md:gap-5">
+                          <div class="font-anton text-muted-foreground text-xl">_ 05 .</div>
+                          <div class="flex-1">
+                            <h4
+                              class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                              Reservation System
+                              <a href="https://github.com/Msaipranith/reservation-management-system" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-foreground opacity-0 group-hover:opacity-100 transition-all"
+                                aria-label="View on GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <path d="M10 14 21 3"></path>
+                                  <path d="M15 3h6v6"></path>
+                                </svg>
+                              </a>
+                            </h4>
+                            <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                              <div class="gap-3 flex items-center">
+                                <span>Java &amp; Spring Boot</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>HTML &amp; CSS</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>REST APIs</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>H2 / MySQL</span>
+                              </div>
+                            </div>
+                            <p class="mt-2 text-xs text-muted-foreground max-w-xl leading-relaxed">
+                              A full-stack reservation management application built with Spring Boot. Handles booking
+                              workflows, manages customer reservations, and exposes RESTful endpoints for frontend
+                              integration.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Project item 6 — Task Management -->
+                      <div
+                        class="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                        data-index="5">
+                        <div class="flex gap-2 md:gap-5">
+                          <div class="font-anton text-muted-foreground text-xl">_ 06 .</div>
+                          <div class="flex-1">
+                            <h4
+                              class="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                              Task Management
+                              <a href="https://github.com/Msaipranith" target="_blank" rel="noopener noreferrer"
+                                class="text-foreground opacity-0 group-hover:opacity-100 transition-all"
+                                aria-label="View on GitHub">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round">
+                                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                  <path d="M10 14 21 3"></path>
+                                  <path d="M15 3h6v6"></path>
+                                </svg>
+                              </a>
+                            </h4>
+                            <div class="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs font-medium">
+                              <div class="gap-3 flex items-center">
+                                <span>Java &amp; Spring Boot</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>Spring Security</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>REST APIs</span>
+                                <span class="inline-block size-2 rounded-full bg-background-light"></span>
+                              </div>
+                              <div class="gap-3 flex items-center">
+                                <span>MySQL</span>
+                              </div>
+                            </div>
+                            <p class="mt-2 text-xs text-muted-foreground max-w-xl leading-relaxed">
+                              A backend-focused task management system built with Spring Boot and Spring Security.
+                              Supports user authentication, task creation, assignment, priority tracking, and status
+                              updates via secure REST endpoints.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+              </section>
+
+              <!-- Section: Footer Redesign / CTA -->
+              <footer id="contact" class="footer-cta">
+                <div class="container">
+
+                  <!-- Top border rule -->
+                  <div class="footer-rule"></div>
+
+                  <!-- Main CTA Headline -->
+                  <div class="footer-headline-wrap slide-reveal">
+                    <p class="footer-eyebrow">What's Next?</p>
+                    <h2 class="footer-headline font-anton">LET'S BUILD SOMETHING<br /><span
+                        class="footer-headline-accent">GREAT</span></h2>
+                    <p class="footer-subtext">
+                      Open to discussing backend engineering opportunities,<br class="hidden sm:block" />
+                      scalable systems, and impactful products.
+                    </p>
+                  </div>
+
+                  <!-- CTA Links -->
+                  <div class="footer-cta-links slide-reveal">
+                    <a href="mailto:saipranithsunny@gmail.com" class="footer-email-link">
+                      saipranithsunny@gmail.com
+                    </a>
+                  </div>
+
+                  <!-- Social Icon Row -->
+                  <div class="footer-socials slide-reveal">
+                    <a href="https://github.com/Msaipranith" target="_blank" rel="noopener noreferrer"
+                      class="footer-social-btn" aria-label="GitHub">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                          d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                      </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/pranith0418/" target="_blank" rel="noopener noreferrer"
+                      class="footer-social-btn" aria-label="LinkedIn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                      </svg>
+                    </a>
+                    <a href="https://www.freelancer.in/u/saipranith6945" target="_blank" rel="noopener noreferrer"
+                      class="footer-social-btn" aria-label="Freelancer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
+                    </a>
+                  </div>
+
+                  <!-- Bottom bar: availability + visitor counter + copyright -->
+                  <div class="footer-bottom">
+                    <div class="footer-availability">
+                      <span class="otw-badge" aria-hidden="true">
+                        <span class="otw-ring otw-ring-1"></span>
+                        <span class="otw-ring otw-ring-2"></span>
+                        <span class="otw-core"></span>
+                      </span>
+                      <span>Available for opportunities</span>
+                    </div>
+
+                    <!-- Visitor Counter Footer Badge -->
+                    <div class="visitor-footer-badge" id="visitor-footer-badge">
+                      <div class="visitor-badge-inner">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="visitor-badge-icon">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <span class="visitor-badge-label">Visitors</span>
+                        <span class="visitor-badge-divider"></span>
+                        <span class="visitor-badge-count" id="footer-visitor-count">—</span>
+                        <span class="visitor-badge-live"></span>
+                      </div>
+                    </div>
+
+                    <p class="footer-copy">
+                      &copy; <span id="footer-year"></span> Mugala Sai Pranith
+                    </p>
+                  </div>
+
+                </div>
+              </footer>
+
             </div>
-
-          </div>
-        </footer>
-
-      </div>
   </main>
 
   <!-- GSAP & Lenis Smooth Scroll CDNs -->

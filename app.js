@@ -1,6 +1,6 @@
 /* -------------------------------------------------------------
- * 100% AUTHENTIC PORTFOLIO INTERACTION ENGINE (VANILLA JS)
- * Orchestrated for Tajmirul Islam - exact replication mechanics
+ * PORTFOLIO INTERACTION ENGINE (VANILLA JS)
+ * Mugala Sai Pranith — Java Backend Developer & Systems Architect
  * ------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -310,6 +310,16 @@ document.addEventListener('DOMContentLoaded', () => {
             overwrite: 'auto'
           });
         }
+
+        // Also stagger reveal any child .experience-item elements
+        const expItems = elem.querySelectorAll('.experience-item');
+        if (expItems.length > 0) {
+          expItems.forEach((item, idx) => {
+            setTimeout(() => {
+              item.classList.add('revealed');
+            }, idx * 120);
+          });
+        }
       }
     });
   });
@@ -453,8 +463,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Hardware accelerated 60fps loop
+    // Hardware accelerated 60fps loop with tab visibility pausing
+    let animationFrameId = null;
+    let isPaused = false;
+
     function loop() {
+      if (isPaused) return;
       ctx.clearRect(0, 0, width, height);
       
       for (let i = 0; i < stars.length; i++) {
@@ -462,8 +476,19 @@ document.addEventListener('DOMContentLoaded', () => {
         stars[i].draw();
       }
 
-      requestAnimationFrame(loop);
+      animationFrameId = requestAnimationFrame(loop);
     }
+
+    // Page Visibility API listener
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        isPaused = true;
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      } else {
+        isPaused = false;
+        loop();
+      }
+    });
 
     initStars();
     loop();
@@ -898,6 +923,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!modal || !modalClose || !modalBody) return;
 
+    let lastFocusedElement = null;
+
     const certTemplates = {
       'gcp-cdl': `
         <div class="flex flex-col items-center gap-4 w-full">
@@ -923,24 +950,50 @@ document.addEventListener('DOMContentLoaded', () => {
       `
     };
 
-    function openModal(certKey) {
+    function openModal(certKey, triggerEl) {
       const template = certTemplates[certKey];
       if (!template) return;
+      
+      // Save last active element to return focus later
+      lastFocusedElement = triggerEl || document.activeElement;
+      
       modalBody.innerHTML = template;
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
+      
+      // Wait for animation frame or browser layout then focus the close button
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          modalClose.focus();
+        }, 50);
+      });
     }
 
     function closeModal() {
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden', 'true');
+      
+      // Return focus to triggering card element
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+      
       setTimeout(() => { modalBody.innerHTML = ''; }, 400);
     }
 
+    // Set up click & keydown trigger listeners for cards
     cards.forEach(card => {
       card.addEventListener('click', () => {
         const certKey = card.getAttribute('data-cert');
-        openModal(certKey);
+        openModal(certKey, card);
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault(); // Prevent spacebar scroll
+          const certKey = card.getAttribute('data-cert');
+          openModal(certKey, card);
+        }
       });
     });
 
@@ -953,10 +1006,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close on ESC
+    // Close on ESC, and implement the keyboard focus trap
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
+      if (!modal.classList.contains('active')) return;
+
+      if (e.key === 'Escape') {
         closeModal();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        // Query all focusable elements inside the modal
+        const focusableEls = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusableEls.length === 0) return;
+
+        const firstFocusableEl = focusableEls[0];
+        const lastFocusableEl = focusableEls[focusableEls.length - 1];
+
+        if (e.shiftKey) {
+          // Shift + Tab
+          if (document.activeElement === firstFocusableEl) {
+            lastFocusableEl.focus();
+            e.preventDefault();
+          }
+        } else {
+          // Tab
+          if (document.activeElement === lastFocusableEl) {
+            firstFocusableEl.focus();
+            e.preventDefault();
+          }
+        }
       }
     });
   }());
